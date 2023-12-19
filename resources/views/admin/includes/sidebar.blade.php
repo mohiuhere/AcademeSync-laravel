@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Create Components
+        Components
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -36,37 +36,23 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <strong>
+                    <a class="collapse-item" href="buttons.html">Class</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href="cards.html">Section</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href="cards.html">Class Setup</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href="cards.html">Subject Assign</a>
+                </strong>
+                {{-- <a class="collapse-item" href="cards.html">Subject</a>
+                <a class="collapse-item" href="cards.html">Subject</a> --}}
             </div>
         </div>
     </li>
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <div class="sidebar-heading">
-        List Components
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Academic</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-
 
     <hr class="sidebar-divider">
 
