@@ -1,7 +1,7 @@
 @extends('admin.layouts.default')
 
 
-@section('title', 'University Admin Register')
+@section('title', 'Admin Dashbord')
 
 @section('bodys')
 

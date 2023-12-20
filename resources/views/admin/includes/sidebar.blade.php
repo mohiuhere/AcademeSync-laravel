@@ -37,16 +37,19 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <strong>
-                    <a class="collapse-item" href="buttons.html">Class</a>
+                    <a class="collapse-item" href={{route('class.index')}}>Class</a>
                 </strong>
                 <strong>
-                    <a class="collapse-item" href="cards.html">Section</a>
+                    <a class="collapse-item" href={{route('section.index')}}>Section</a>
                 </strong>
                 <strong>
-                    <a class="collapse-item" href="cards.html">Class Setup</a>
+                    <a class="collapse-item" href={{route('subject.index')}}>Subject</a>
                 </strong>
                 <strong>
-                    <a class="collapse-item" href="cards.html">Subject Assign</a>
+                    <a class="collapse-item" href={{route('class.setup.index')}}>Class Setup</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('subject.assign.index')}}>Subject Assign</a>
                 </strong>
                 {{-- <a class="collapse-item" href="cards.html">Subject</a>
                 <a class="collapse-item" href="cards.html">Subject</a> --}}

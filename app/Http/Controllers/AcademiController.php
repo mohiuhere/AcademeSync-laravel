@@ -10,11 +10,11 @@ class AcademiController extends Controller
     //-------------------------------------CLASSES-------------------------------------------------------/
     
     public function classIndex(){
-
+        return view('admin.pages.classes');
     }
 
     public function createClassIndex(){
-        
+        return view('admin.pages.class-create');
     }
 
     public function storeClass(){
@@ -30,40 +30,15 @@ class AcademiController extends Controller
     }
 
     //-------------------------------------END CLASSES-------------------------------------------------------/
-
-    //-------------------------------------CLASS SETUP-------------------------------------------------------/
     
-    public function classSetupIndex(){
-
-    }
-
-    public function createClassSetupIndex(){
-
-    }
-
-    public function storeClassSetup(){
-        
-    }
-
-    public function editClassSetup(){
-
-    }
-
-    public function deleteClassSetup(){
-
-    }
-
-    //-------------------------------------END CLASS SETUP----------------------------------------------------/
-
-
     //-------------------------------------SECTION------------------------------------------------------------/
 
     public function sectionIndex(){
-
+        return view('admin.pages.section');
     }
 
     public function createSectionIndex(){
-
+        return view('admin.pages.section-create');
     }
 
     public function storeSection(){
@@ -79,14 +54,14 @@ class AcademiController extends Controller
     }
 
     //-------------------------------------END SECTION-------------------------------------------------------/
-
+    
     //-------------------------------------SUBJECT------------------------------------------------------------/
     public function subjectIndex(){
-
+        return view('admin.pages.subject');
     }
 
     public function createSubjectIndex(){
-
+        return view('admin.pages.subject-create');
     }
 
     public function storeSubject(){
@@ -102,13 +77,53 @@ class AcademiController extends Controller
     }
     //-----------------------------------END SUBJECT----------------------------------------------------------/
 
-    //-------------------------------------SUBJECT ASSIGN----------------------------------------------------/
-    public function subjectAssignIndex(){
+    //-------------------------------------CLASS SETUP-------------------------------------------------------/
+    
+    public function classSetupIndex(){
+        return view('admin.pages.class-setup');
+    }
+
+    public function createClassSetupIndex(){
+        return view('admin.pages.class-setup-create');
+    }
+
+    public function storeClassSetup(Request $request){
+        dd($request);
+    }
+
+    public function editClassSetup(){
 
     }
 
-    public function createSubjectAssignIndex(){
+    public function deleteClassSetup(){
 
+    }
+
+    //-------------------------------------END CLASS SETUP----------------------------------------------------/
+
+
+    //-------------------------------------SUBJECT ASSIGN----------------------------------------------------/
+    public function subjectAssignIndex(){
+        return view('admin.pages.subject-assign');
+    }
+
+    public function createSubjectAssignIndex(){
+        // Assuming $authors is an array of authors with id and name properties
+        $subjects = [
+            ['id' => 1, 'name' => 'Bangla'],
+            ['id' => 2, 'name' => 'English'],
+            // Add more authors as needed
+        ];
+
+        $teachers = [
+            ['id' => 1, 'name' => 'Sunny'],
+            ['id' => 2, 'name' => 'Musa'],
+            // Add more authors as needed
+        ];
+        return view('admin.pages.subject-assign-create',[
+            'teachers' => $teachers,
+            'subjects' => $subjects
+        ]);
     }
 
     public function storeSubjectAssign(){
