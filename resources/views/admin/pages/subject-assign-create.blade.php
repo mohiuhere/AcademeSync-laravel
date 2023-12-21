@@ -3,68 +3,65 @@
 
 @section('title', 'Subject Assign Create')
 
+@section('page-heading', 'Subject Assign Create')
+
 @section('bodys')
 
-<div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Subject Assign Create</h1>
-
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header  row justify-content-md-center m-0">
-            <h6 class="m-0 font-weight-bold text-primary col align-self-center">Subject Assign Input</h6>
-        </div>
-        <div class="card-body">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col">
-                        <label for="inputState" class="form-label">Class</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="inputState" class="form-label">Section</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <div class="col-4">
-                        <h5>Add Subject & Teacher</h5>
-                    </div>
-                    <div class="col offset-7">
-                        <button class="btn btn-success add_item_button"><i class="fa-solid fa-plus"></i> Add</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-11 d-flex">
-                        <strong class="col-md-4">Subject</strong>
-                        <strong class="col-md-4 offset-md-2">Teacher</strong>
-                    </div>
-                </div>
-                <hr class="mt-0">
-                <div id="show_item">
-                    {{-- <div class="row">
-                        <div class="col-md-11 mb-3 d-flex">
-                            <input type="text" name="author_name[]" class="form-control mr-2" placeholder="Author Name">
-                            <input type="text" name="author_email[]" class="form-control mr-2" placeholder="Author Email">
-                        </div>
-                        <div class="col-md-1 mb-3 d-grid">
-                            <button class="btn btn-danger remove_item_button"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div> --}}
-                </div>
-            </form>
-        </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header  row justify-content-md-center m-0">
+        <h6 class="m-0 font-weight-bold text-primary col align-self-center">Subject Assign Input</h6>
     </div>
-
+    <div class="card-body">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col">
+                    <label for="inputState" class="form-label">Class</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="inputState" class="form-label">Section</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-4">
+                    <h5>Add Subject & Teacher</h5>
+                </div>
+                <div class="col offset-7">
+                    <button class="btn btn-success add_item_button"><i class="fa-solid fa-plus"></i> Add</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-11 d-flex">
+                    <strong class="col-md-4">Subject</strong>
+                    <strong class="col-md-4 offset-md-2">Teacher</strong>
+                </div>
+            </div>
+            <hr class="mt-0">
+            <div id="show_item">
+                {{-- <div class="row">
+                    <div class="col-md-11 mb-3 d-flex">
+                        <input type="text" name="author_name[]" class="form-control mr-2" placeholder="Author Name">
+                        <input type="text" name="author_email[]" class="form-control mr-2" placeholder="Author Email">
+                    </div>
+                    <div class="col-md-1 mb-3 d-grid">
+                        <button class="btn btn-danger remove_item_button"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div> --}}
+            </div>
+        </form>
+    </div>
 </div>
+
+
 
 <script>
     $(document).ready(function(){
@@ -86,7 +83,7 @@
                             </select>
                         </div>
                         <div class="col-md-1 mb-3 d-grid">
-                            <button class="btn btn-danger remove_item_button"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="btn btn-danger remove_item_button"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                     </div>`)
         });

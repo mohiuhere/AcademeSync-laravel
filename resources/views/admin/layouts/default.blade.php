@@ -47,10 +47,25 @@
                 @include('admin.includes.top-nav')
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-
-                @yield('bodys')
                 
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h1 class="h3 mb-2 text-gray-800">
+                                @yield('page-heading')
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- End Page Heading -->
+
+                    <!-- Begin Page Content -->
+                    @yield('bodys')
+                    <!-- End Page Content -->
+                
+                </div>
                 <!-- /.container-fluid -->
 
             </div>

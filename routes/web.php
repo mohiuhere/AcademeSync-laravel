@@ -14,7 +14,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 //---------------------------------------ADMIN--------------------------------------------------------------/
-Route::get('admin/dashbord', [AdminController::class, 'adminIndex']);
+Route::get('admin/dashbord', [AdminController::class, 'adminIndex'])->name('admin.dashbord');
 
 
 Route::get('classes', [AcademiController::class, 'classIndex'])->name('class.index');//list of classes
