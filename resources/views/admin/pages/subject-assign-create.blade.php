@@ -14,7 +14,8 @@
         <h6 class="m-0 font-weight-bold text-primary col align-self-center">Subject Assign Input</h6>
     </div>
     <div class="card-body">
-        <form action="" method="post">
+        <form action={{route('store.subject-assign')}} method="post">
+            @csrf
             <div class="row">
                 <div class="col">
                     <label for="inputState" class="form-label">Class</label>
@@ -57,6 +58,7 @@
                     </div>
                 </div> --}}
             </div>
+            <button class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Submit</button>
         </form>
     </div>
 </div>

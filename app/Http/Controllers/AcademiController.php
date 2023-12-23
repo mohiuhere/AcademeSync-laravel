@@ -6,136 +6,134 @@ use Illuminate\Http\Request;
 
 class AcademiController extends Controller
 {
-
-    //-------------------------------------CLASSES-------------------------------------------------------/
+    //---------------------------------------CLASSES-------------------------------------------------------/
     
-    public function classIndex(){
-        return view('admin.pages.classes');
-    }
+        public function classIndex(){
+            return view('admin.pages.classes');
+        }
 
-    public function createClassIndex(){
-        return view('admin.pages.class-create');
-    }
+        public function createClassIndex(){
+            return view('admin.pages.class-create');
+        }
 
-    public function storeClass(){
+        public function storeClass(){
 
-    }
+        }
 
-    public function editClass(){
+        public function editClass(){
 
-    }
+        }
 
-    public function deleteClass(){
+        public function deleteClass(){
 
-    }
+        }
 
-    //-------------------------------------END CLASSES-------------------------------------------------------/
+    //-------------------------------------END CLASSES-----------------------------------------------------/
     
-    //-------------------------------------SECTION------------------------------------------------------------/
+    //---------------------------------------SECTION-------------------------------------------------------/
 
-    public function sectionIndex(){
-        return view('admin.pages.section');
-    }
+        public function sectionIndex(){
+            return view('admin.pages.section');
+        }
 
-    public function createSectionIndex(){
-        return view('admin.pages.section-create');
-    }
+        public function createSectionIndex(){
+            return view('admin.pages.section-create');
+        }
 
-    public function storeSection(){
+        public function storeSection(){
 
-    }
+        }
 
-    public function editSection(){
+        public function editSection(){
 
-    }
+        }
 
-    public function deleteSection(){
+        public function deleteSection(){
 
-    }
+        }
 
-    //-------------------------------------END SECTION-------------------------------------------------------/
+    //-------------------------------------END SECTION-----------------------------------------------------/
     
-    //-------------------------------------SUBJECT------------------------------------------------------------/
-    public function subjectIndex(){
-        return view('admin.pages.subject');
-    }
+    //-------------------------------------SUBJECT---------------------------------------------------------/
+        public function subjectIndex(){
+            return view('admin.pages.subject');
+        }
 
-    public function createSubjectIndex(){
-        return view('admin.pages.subject-create');
-    }
+        public function createSubjectIndex(){
+            return view('admin.pages.subject-create');
+        }
 
-    public function storeSubject(){
+        public function storeSubject(){
 
-    }
+        }
 
-    public function editSubject(){
+        public function editSubject(){
 
-    }
+        }
 
-    public function deleteSubject(){
+        public function deleteSubject(){
 
-    }
-    //-----------------------------------END SUBJECT----------------------------------------------------------/
+        }
+    //-----------------------------------END SUBJECT-------------------------------------------------------/
 
-    //-------------------------------------CLASS SETUP-------------------------------------------------------/
+    //---------------------------------------CLASS SETUP---------------------------------------------------/
     
-    public function classSetupIndex(){
-        return view('admin.pages.class-setup');
-    }
+        public function classSetupIndex(){
+            return view('admin.pages.class-setup');
+        }
 
-    public function createClassSetupIndex(){
-        return view('admin.pages.class-setup-create');
-    }
+        public function createClassSetupIndex(){
+            return view('admin.pages.class-setup-create');
+        }
 
-    public function storeClassSetup(Request $request){
-        dd($request);
-    }
+        public function storeClassSetup(Request $request){
+            dd($request);
+        }
 
-    public function editClassSetup(){
+        public function editClassSetup(){
 
-    }
+        }
 
-    public function deleteClassSetup(){
+        public function deleteClassSetup(){
 
-    }
+        }
 
-    //-------------------------------------END CLASS SETUP----------------------------------------------------/
+    //-------------------------------------END CLASS SETUP-------------------------------------------------/
 
+    //---------------------------------------SUBJECT ASSIGN------------------------------------------------/
+        public function subjectAssignIndex(){
+            return view('admin.pages.subject-assign');
+        }
 
-    //-------------------------------------SUBJECT ASSIGN----------------------------------------------------/
-    public function subjectAssignIndex(){
-        return view('admin.pages.subject-assign');
-    }
+        public function createSubjectAssignIndex(){
+            // Assuming $authors is an array of authors with id and name properties
+            $subjects = [
+                ['id' => 1, 'name' => 'Bangla'],
+                ['id' => 2, 'name' => 'English'],
+                // Add more authors as needed
+            ];
 
-    public function createSubjectAssignIndex(){
-        // Assuming $authors is an array of authors with id and name properties
-        $subjects = [
-            ['id' => 1, 'name' => 'Bangla'],
-            ['id' => 2, 'name' => 'English'],
-            // Add more authors as needed
-        ];
+            $teachers = [
+                ['id' => 1, 'name' => 'Sunny'],
+                ['id' => 2, 'name' => 'Musa'],
+                // Add more authors as needed
+            ];
+            return view('admin.pages.subject-assign-create',[
+                'teachers' => $teachers,
+                'subjects' => $subjects
+            ]);
+        }
 
-        $teachers = [
-            ['id' => 1, 'name' => 'Sunny'],
-            ['id' => 2, 'name' => 'Musa'],
-            // Add more authors as needed
-        ];
-        return view('admin.pages.subject-assign-create',[
-            'teachers' => $teachers,
-            'subjects' => $subjects
-        ]);
-    }
+        public function storeSubjectAssign(Request $req){
+            dd($req);
+        }
 
-    public function storeSubjectAssign(){
+        public function editSubjectAssign(){
 
-    }
+        }
 
-    public function editSubjectAssign(){
+        public function deleteSubjectAssign(){
 
-    }
-
-    public function deleteSubjectAssign(){
-
-    }
-    //-------------------------------------END SUBJECT ASSIGN------------------------------------------------/
+        }
+    //-------------------------------------END SUBJECT ASSIGN----------------------------------------------/
 }

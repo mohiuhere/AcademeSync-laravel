@@ -1,5 +1,13 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+    
+    <div class="text-center d-none d-md-inline rotate-top-nav-icon">
+        <button class="rounded-circle bg-gray border-0" id="sidebarToggle">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </div>
+
+
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
@@ -87,3 +95,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(".rotate-top-nav-icon").click(function () {
+        $(this).toggleClass("down");
+    })
+</script>
