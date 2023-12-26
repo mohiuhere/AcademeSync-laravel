@@ -8,11 +8,11 @@ class ExaminationController extends Controller
 {
     //---------------------------------------Exam Type---------------------------------------------------/
         public function examTypeIndex(){
-            return view('admin.pages.exam-type');
+            return view('admin.pages.examination.exam-type');
         }
 
         public function createExamTypeIndex(){
-            return view('admin.pages.exam-type-create');
+            return view('admin.pages.examination.exam-type-create');
         }
 
         public function storeExamType(){
@@ -26,41 +26,41 @@ class ExaminationController extends Controller
         public function deleteExamTypeIndex(){
 
         }
-    //-------------------------------------End Exam Type-------------------------------------------------/
+    //-------------------------------------End Exam Type------------------------------------------------/
 
     //---------------------------------------Mark Grade--------------------------------------------------/
         public function markGradeIndex(){
-            return view('admin.pages.mark-grade');
+            return view('admin.pages.examination.mark-grade');
         }
 
         public function createMarkGradeIndex(){
-            return view('admin.pages.mark-grade-create');
+            return view('admin.pages.examination.mark-grade-create');
         }
 
 
-    //-------------------------------------End Mark Grade------------------------------------------------/
+    //-------------------------------------End Mark Grade-----------------------------------------------/
 
     //---------------------------------------Mark Distribution-------------------------------------------/
         public function markDistributionIndex(){
-            return view('admin.pages.mark-distribution');
+            return view('admin.pages.examination.mark-distribution');
         }
 
         public function createMarkDistributionIndex(){
-            return view('admin.pages.mark-distribution-create');
+            return view('admin.pages.examination.mark-distribution-create');
         }
 
         public function storeMarkDistribution(Request $req){
             dd($req);
         }
-    //-------------------------------------End Mark Distribution-----------------------------------------/
+    //-------------------------------------End Mark Distribution----------------------------------------/
 
     //---------------------------------------Mark Setup ------------------------------------------------/
         public function examSetupIndex(){
-            return view('admin.pages.exam-setup');
+            return view('admin.pages.examination.exam-setup');
         }
 
         public function createExamSetupIndex(){
-            return view('admin.pages.exam-setup-create');
+            return view('admin.pages.examination.exam-setup-create');
         }
 
         public function storeExamSetup(Request $req){
@@ -68,17 +68,17 @@ class ExaminationController extends Controller
         }
     //-------------------------------------End Mark Setup----------------------------------------------/
 
-    //---------------------------------------Mark Register ----------------------------------------/
+    //---------------------------------------Mark Register --------------------------------------------/
         public function markRegisterIndex(){
-            return view('admin.pages.mark-register');
+            return view('admin.pages.examination.mark-register');
         }
 
         public function createMarkRegisterIndex(){
-            return view('admin.pages.mark-register-create');
+            return view('admin.pages.examination.mark-register-create');
         }
 
         public function storeMarkRegister(Request $req){
             dd($req);
         }
-//-------------------------------------End Mark Register-------------------------------------------/
+    //-------------------------------------End Mark Register------------------------------------------/
 }

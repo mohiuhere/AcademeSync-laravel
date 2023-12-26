@@ -10108,16 +10108,25 @@ a:focus {
   height: .5rem;
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-container {
+  display: flex;
+}
+
 .rotate-top-nav-icon {
-  -moz-transition: all .1s linear;
-  -webkit-transition: all .1s linear;
-  transition: all .1s linear;
+
+  animation: rotate 3s linear infinite; /* 3s duration, linear timing, infinite loop */
+  transform-origin: center; /* Rotate around the center of the element */
 }
-.rotate-top-nav-icon.down {
-  -moz-transform:rotate(180deg);
-  -webkit-transform:rotate(180deg);
-  transform:rotate(180deg);
-}
+
 
 .rotate-15 {
   transform: rotate(15deg);

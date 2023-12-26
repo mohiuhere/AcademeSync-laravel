@@ -9,11 +9,11 @@ class AcademiController extends Controller
     //---------------------------------------CLASSES-------------------------------------------------------/
     
         public function classIndex(){
-            return view('admin.pages.classes');
+            return view('admin.pages.academic.classes');
         }
 
         public function createClassIndex(){
-            return view('admin.pages.class-create');
+            return view('admin.pages.academic.class-create');
         }
 
         public function storeClass(){
@@ -33,11 +33,11 @@ class AcademiController extends Controller
     //---------------------------------------SECTION-------------------------------------------------------/
 
         public function sectionIndex(){
-            return view('admin.pages.section');
+            return view('admin.pages.academic.section');
         }
 
         public function createSectionIndex(){
-            return view('admin.pages.section-create');
+            return view('admin.pages.academic.section-create');
         }
 
         public function storeSection(){
@@ -56,11 +56,11 @@ class AcademiController extends Controller
     
     //-------------------------------------SUBJECT---------------------------------------------------------/
         public function subjectIndex(){
-            return view('admin.pages.subject');
+            return view('admin.pages.academic.subject');
         }
 
         public function createSubjectIndex(){
-            return view('admin.pages.subject-create');
+            return view('admin.pages.academic.subject-create');
         }
 
         public function storeSubject(){
@@ -79,11 +79,11 @@ class AcademiController extends Controller
     //---------------------------------------CLASS SETUP---------------------------------------------------/
     
         public function classSetupIndex(){
-            return view('admin.pages.class-setup');
+            return view('admin.pages.academic.class-setup');
         }
 
         public function createClassSetupIndex(){
-            return view('admin.pages.class-setup-create');
+            return view('admin.pages.academic.class-setup-create');
         }
 
         public function storeClassSetup(Request $request){
@@ -102,7 +102,7 @@ class AcademiController extends Controller
 
     //---------------------------------------SUBJECT ASSIGN------------------------------------------------/
         public function subjectAssignIndex(){
-            return view('admin.pages.subject-assign');
+            return view('admin.pages.academic.subject-assign');
         }
 
         public function createSubjectAssignIndex(){
@@ -118,7 +118,7 @@ class AcademiController extends Controller
                 ['id' => 2, 'name' => 'Musa'],
                 // Add more authors as needed
             ];
-            return view('admin.pages.subject-assign-create',[
+            return view('admin.pages.academic.subject-assign-create',[
                 'teachers' => $teachers,
                 'subjects' => $subjects
             ]);
