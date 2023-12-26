@@ -1,9 +1,9 @@
 @extends('admin.layouts.default')
 
 
-@section('title', 'Fee Type')
+@section('title', 'Blood Groups')
 
-@section('page-heading', 'Fee Type')
+@section('page-heading', 'Blood Groups')
 
 @section('bodys')
 
@@ -11,8 +11,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header row justify-content-md-center m-0">
-        <h6 class="m-0 font-weight-bold text-primary col align-self-center">Fee Type Table</h6>
-        <a href={{route('create.fee-type.index')}}><button class="btn btn-primary">Create</button></a>
+        <h6 class="m-0 font-weight-bold text-primary col align-self-center">Blood Groups Table</h6>
+        <a href={{route('create.blood-group.index')}}><button class="btn btn-primary">Create</button></a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,8 +20,6 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Code</th>
-                        <th>Description</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -29,17 +27,13 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Code</th>
-                        <th>Description</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <tr>
-                        <td>january months fee</td>
-                        <td>january months fee</td>
-                        <td>january months fee Fees Type Description. Lorem ipsum dolor sit amet et justo od 1</td>
+                        <td>O+</td>
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
@@ -54,9 +48,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>january months fee</td>
-                        <td>january months fee</td>
-                        <td>january months fee Fees Type Description. Lorem ipsum dolor sit amet et justo od 1</td>
+                        <td>O-</td>
                         <td>Active</td>
                         <td>
                             <div class="dropdown">

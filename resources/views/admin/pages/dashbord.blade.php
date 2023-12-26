@@ -3,7 +3,7 @@
 
 @section('title', 'Admin Dashbord')
 
-@section('page-heading', 'Admin Dashbord')
+@section('page-heading', 'Dashbord')
 
 @section('bodys')
 

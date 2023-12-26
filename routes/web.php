@@ -5,6 +5,7 @@ use App\Http\Controllers\AcademiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\FeeController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,6 +106,22 @@ use App\Http\Controllers\FeeController;
     Route::get('fee-collect/create', [FeeController::class, 'createFeeCollectIndex'])->name('create.fee.collect.index');
     Route::get('fee-collect/collect/{id}', [FeeController::class, 'collectFeeCollectIndex'])->name('collect.fee.collect.index');
 
+//---------------------------------------- End Fees-----------------------------------------/
+
+//-------------------------------------------Fees--------------------------------------------/
+    Route::get('general-setting', [SettingController::class, 'generalSettingIndex'])->name('general.setting.index');
+
+    Route::get('gender', [SettingController::class, 'genderIndex'])->name('gender.index');
+    Route::get('gender/create', [SettingController::class, 'createGenderIndex'])->name('create.gender.index');
+
+    Route::get('religion', [SettingController::class, 'religionIndex'])->name('religion.index');
+    Route::get('religion/create', [SettingController::class, 'createReligionIndex'])->name('create.religion.index');
+
+    Route::get('blood-group', [SettingController::class, 'bloodGroupIndex'])->name('blood-group.index');
+    Route::get('blood-group/create', [SettingController::class, 'createBloodGroupIndex'])->name('create.blood-group.index');
+
+    Route::get('session', [SettingController::class, 'sessionIndex'])->name('session.index');
+    Route::get('session/create', [SettingController::class, 'createSessionIndex'])->name('create.session.index');
 //---------------------------------------- End Fees-----------------------------------------/
 
 Route::get('mark-register/mark-register-filter', function(){

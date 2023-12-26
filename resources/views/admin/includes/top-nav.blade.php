@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-dark bg-white topbar mb-4 static-top shadow">
 
     
     {{-- <div class="text-center d-none d-md-inline rotate-top-nav-icon">
@@ -46,7 +46,7 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                 <img class="img-profile rounded-circle"
-                    src={{asset('img/undraw_profile.svg')}}>
+                    src={{asset('img/undraw_profile_2.svg')}}>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

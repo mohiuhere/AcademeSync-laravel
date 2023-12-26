@@ -9,7 +9,7 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    {{-- <hr class="sidebar-divider my-0"> --}}
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
@@ -19,7 +19,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <!-- Heading -->
     {{-- <div class="sidebar-heading">
@@ -56,7 +56,7 @@
         </div>
     </li>
 
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -85,7 +85,7 @@
         </div>
     </li>
 
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
@@ -106,6 +106,35 @@
                 </strong>
                 <strong>
                     <a class="collapse-item" href={{route('fee.collect.index')}}>Collect</a>
+                </strong>
+            </div>
+        </div>
+    </li>
+
+    {{-- <hr class="sidebar-divider"> --}}
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <strong>
+                    <a class="collapse-item" href={{route('general.setting.index')}}>General Settings</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('gender.index')}} >Genders</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('religion.index')}} >Religions</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('blood-group.index')}} >Blood Groups</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('session.index')}} >Sessions</a>
                 </strong>
             </div>
         </div>
