@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fee-assign extends Model
+class ClassSetup extends Model
 {
     use HasFactory;
 }

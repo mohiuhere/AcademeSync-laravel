@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fee-collect extends Model
+class FeeAssign extends Model
 {
     use HasFactory;
 }

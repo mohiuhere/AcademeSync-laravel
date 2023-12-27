@@ -142,7 +142,7 @@
                     <a class="collapse-item" href={{route('teacher.index')}}>Teachers</a>
                 </strong>
                 <strong>
-                    <a class="collapse-item" href={{route('assign-admin.index')}} >Assign Admin</a>
+                    <a class="collapse-item" href={{route('assign-admin.index')}} >Admin Assign</a>
                 </strong>
             </div>
         </div>

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Class-setup extends Model
+class MarkDistribution extends Model
 {
     use HasFactory;
 }
