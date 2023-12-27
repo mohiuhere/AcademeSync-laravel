@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AcademiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExaminationController;
@@ -18,6 +19,13 @@ use App\Http\Controllers\SettingController;
 */
 //--------------------------------------------ADMIN----------------------------------------------------/
     Route::get('admin/dashbord', [AdminController::class, 'adminIndex'])->name('admin.dashbord');
+//--------------------------------------END ADMIN-----------------------------------------------------/
+
+//--------------------------------------------ADMIN----------------------------------------------------/
+    Route::get('student', [StudentController::class, 'studentIndex'])->name('student.index');
+    Route::get('student/create', [StudentController::class, 'createStudentIndex'])->name('create.student.index');
+
+    Route::get('promote-student', [StudentController::class, 'promoteStudentIndex'])->name('promote.student.index');
 //--------------------------------------END ADMIN-----------------------------------------------------/
 
 //-------------------------------------------Academic--------------------------------------------------/

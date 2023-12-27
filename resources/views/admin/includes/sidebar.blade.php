@@ -27,6 +27,25 @@
     </div> --}}
 
     <!-- Nav Item - Pages Collapse Menu -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseZero"
+            aria-expanded="true" aria-controls="collapseZero">
+            <i class="fas fa-info-circle"></i>
+            <span>Students Info</span>
+        </a>
+        <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <strong>
+                    <a class="collapse-item" href={{route('student.index')}}>Students</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('promote.student.index')}} >Promote students</a>
+                </strong>
+            </div>
+        </div>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
             aria-expanded="true" aria-controls="collapseOne">
