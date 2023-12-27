@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('subject_assigns', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')->references('id')->on('sections');
+
+            $table->unsignedBigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
+
             $table->timestamps();
         });
     }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('class_setups', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')->references('id')->on('sections');
+
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

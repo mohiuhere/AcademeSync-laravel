@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('session_lists', function (Blueprint $table) {
             $table->id();
+            $table->string('session_list_name');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

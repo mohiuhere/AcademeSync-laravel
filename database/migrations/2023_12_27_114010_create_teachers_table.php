@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('teacher_uid');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->double('basic_salary', 8, 2);
+            $table->date('joining_date');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
