@@ -37,7 +37,7 @@
                     <h5>Add Subject & Teacher</h5>
                 </div>
                 <div class="col offset-7">
-                    <button class="btn btn-success add_item_button"><i class="fa-solid fa-plus"></i> Add</button>
+                    <button class="btn btn-primary add_item_button"><i class="fa-solid fa-plus"></i> Add</button>
                 </div>
             </div>
             <div class="row">

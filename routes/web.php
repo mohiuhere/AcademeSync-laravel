@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AcademiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExaminationController;
@@ -21,12 +22,19 @@ use App\Http\Controllers\SettingController;
     Route::get('admin/dashbord', [AdminController::class, 'adminIndex'])->name('admin.dashbord');
 //--------------------------------------END ADMIN-----------------------------------------------------/
 
-//--------------------------------------------ADMIN----------------------------------------------------/
+//--------------------------------------------Student----------------------------------------------------/
     Route::get('student', [StudentController::class, 'studentIndex'])->name('student.index');
     Route::get('student/create', [StudentController::class, 'createStudentIndex'])->name('create.student.index');
 
     Route::get('promote-student', [StudentController::class, 'promoteStudentIndex'])->name('promote.student.index');
-//--------------------------------------END ADMIN-----------------------------------------------------/
+//------------------------------------------END Student-------------------------------------------------/
+
+//--------------------------------------------Staff----------------------------------------------------/
+    Route::get('teacher', [StaffController::class, 'teacherIndex'])->name('teacher.index');
+    Route::get('teacher/create', [StaffController::class, 'createTeacherIndex'])->name('create.teacher.index');
+
+    Route::get('assign-admin', [StaffController::class, 'assignAdminIndex'])->name('assign-admin.index');
+//------------------------------------------END Staff-------------------------------------------------/
 
 //-------------------------------------------Academic--------------------------------------------------/
     Route::get('classes', [AcademiController::class, 'classIndex'])->name('class.index');//list of classes

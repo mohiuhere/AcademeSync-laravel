@@ -18,11 +18,17 @@
             <div class="row">
                 <div class="col">
                     <label for="inputClass" class="form-label">Class</label>
-                    <input type="text" class="form-control" placeholder="Class" aria-label="Class">
+                    <select id="inputClass" class="form-control">
+                        <option selected>ONE</option>
+                        <option>TWO</option>
+                    </select>
                 </div>
                 <div class="col">
                     <label for="inputSection" class="form-label">Section</label>
-                    <input type="text" class="form-control" placeholder="Select Section" aria-label="Section">
+                    <select id="inputSection" class="form-control">
+                        <option selected>A</option>
+                        <option>B</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-4">

@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href={{route('admin.dashbord')}}>
@@ -31,7 +31,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseZero"
             aria-expanded="true" aria-controls="collapseZero">
-            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-user-graduate"></i>
             <span>Students Info</span>
         </a>
         <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -80,7 +80,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseOne">
-            <i class="fa-regular fa-clipboard"></i>
+            <i class="fas fa-clipboard"></i>
             <span>Examination</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -130,15 +130,32 @@
         </div>
     </li>
 
-    {{-- <hr class="sidebar-divider"> --}}
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
             aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-users-cog"></i>
+            <span>Staff</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <strong>
+                    <a class="collapse-item" href={{route('teacher.index')}}>Teachers</a>
+                </strong>
+                <strong>
+                    <a class="collapse-item" href={{route('assign-admin.index')}} >Assign Admin</a>
+                </strong>
+            </div>
+        </div>
+    </li>
+    {{-- <hr class="sidebar-divider"> --}}
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
+            aria-expanded="true" aria-controls="collapseFive">
             <i class="fas fa-cog"></i>
             <span>Settings</span>
         </a>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <strong>
                     <a class="collapse-item" href={{route('general.setting.index')}}>General Settings</a>
