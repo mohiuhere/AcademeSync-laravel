@@ -124,8 +124,9 @@ use App\Http\Controllers\SettingController;
 
 //---------------------------------------- End Fees-----------------------------------------/
 
-//-------------------------------------------Fees--------------------------------------------/
+//-------------------------------------------Setting--------------------------------------------/
     Route::get('general-setting', [SettingController::class, 'generalSettingIndex'])->name('general.setting.index');
+    Route::post('general-setting/store', [SettingController::class, 'storeGeneralSetting'])->name('store.general.setting');
 
     Route::get('gender', [SettingController::class, 'genderIndex'])->name('gender.index');
     Route::get('gender/create', [SettingController::class, 'createGenderIndex'])->name('create.gender.index');
@@ -138,7 +139,7 @@ use App\Http\Controllers\SettingController;
 
     Route::get('session', [SettingController::class, 'sessionIndex'])->name('session.index');
     Route::get('session/create', [SettingController::class, 'createSessionIndex'])->name('create.session.index');
-//---------------------------------------- End Fees-----------------------------------------/
+//---------------------------------------- End Setting-----------------------------------------/
 
 Route::get('mark-register/mark-register-filter', function(){
     $data = [[

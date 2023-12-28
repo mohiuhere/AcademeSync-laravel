@@ -14,38 +14,40 @@
         <h6 class="m-0 font-weight-bold text-primary col align-self-center">General Settings Input</h6>
     </div>
     <div class="card-body">
-        <form action="" method="post">
+        <form action={{route('store.general.setting')}} enctype="multipart/form-data" method="post">
+            @csrf
             <div class="row">
                 <div class="col">
                     <label for="inputSchoolName" class="form-label">School Name</label>
-                    <input type="text" class="form-control" placeholder="Enter School Name" aria-label="School Name">
+                    <input name="school_name" value={{$data->school_name}} type="text" class="form-control" placeholder="Enter School Name" aria-label="School Name">
                 </div>
                 <div class="col">
                     <label for="inputSchoolPhone" class="form-label">School Phone</label>
-                    <input type="number" class="form-control" placeholder="Enter School Phone" aria-label="School Phone">
+                    <input name="school_phone" value={{$data->school_phone}} type="number" class="form-control" placeholder="Enter School Phone" aria-label="School Phone">
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col">
                     <label for="inputSchoolName" class="form-label">School Email</label>
-                    <input type="email" class="form-control" placeholder="Enter School Email" aria-label="School Email">
+                    <input name="school_email" value={{$data->school_email}} type="email" class="form-control" placeholder="Enter School Email" aria-label="School Email">
                 </div>
                 <div class="col">
                     <label for="inputSchoolLogo" class="form-label">Logo</label>
-                    <input type="file" class="form-control" >
+                    <input name="school_logo" type="file" class="form-control" >
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="col">
-                    <label for="inputAddress " class="form-label">Address</label>
-                    <textarea type="text" class="form-control" placeholder="Enter Address" cols="50" rows="4"></textarea>
+                    <label for="inputAddress" class="form-label">Address</label>
+                    <textarea name="school_address" type="text" class="form-control" placeholder="Enter Address" cols="50" rows="4">{{$data->school_address}}</textarea>
                 </div>
                 <div class="col">
                     <label for="inputSchoolAbout" class="form-label">School About</label>
-                    <textarea type="text" class="form-control" placeholder="Enter School About" cols="50" rows="4"></textarea>
+                    <textarea name="school_about" type="text" class="form-control" placeholder="Enter School About" cols="50" rows="4">{{$data->school_about}}</textarea>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Submit</button>
         </form>
     </div>
 </div>
