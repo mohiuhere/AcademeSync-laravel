@@ -42,11 +42,7 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col">
-                    <label for="inputAmount" class="form-label">Amount</label>
-                    <input type="number" class="form-control" placeholder="Exam Amount" aria-label="Exam Amount">
-                </div>
-                <div class="col">
+                <div class="col-6">
                     <label for="inputStatus" class="form-label">Status</label>
                     <select id="inputStatus" class="form-control">
                         <option selected>Active</option>

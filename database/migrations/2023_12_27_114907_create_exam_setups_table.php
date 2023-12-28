@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('exam_setups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('exam_type_id');
+            $table->foreign('exam_type_id')->references('id')->on('exam_types');
+
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')->references('id')->on('sections');
+
+            $table->unsignedBigInteger('mark_distribution_id');
+            $table->foreign('mark_distribution_id')->references('id')->on('mark_distributions');
+
+            $table->unsignedBigInteger('session_list_id');
+            $table->foreign('session_list_id')->references('id')->on('session_lists');
+
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

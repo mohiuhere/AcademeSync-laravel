@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('fee_types', function (Blueprint $table) {
             $table->id();
+            $table->string('fee_type_name');
+            $table->string('fee_code');
+            $table->string('fee_description');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

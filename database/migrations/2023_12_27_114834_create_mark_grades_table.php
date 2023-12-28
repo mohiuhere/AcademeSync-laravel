@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('mark_grades', function (Blueprint $table) {
             $table->id();
+            $table->string('mark_grade_name');
+            $table->decimal('point', 3, 2);
+            $table->integer('percent_from');
+            $table->integer('percent_upto');
+            $table->string('Remark');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

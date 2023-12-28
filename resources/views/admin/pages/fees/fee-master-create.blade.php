@@ -24,7 +24,7 @@
                     </select>
                 </div>
                 <div class="col">
-                    <label for="inputStatus" class="form-label">Status</label>
+                    <label for="inputStatus" class="form-label">Due Date</label>
                     <input type="date" class="form-control">
                 </div>
             </div>

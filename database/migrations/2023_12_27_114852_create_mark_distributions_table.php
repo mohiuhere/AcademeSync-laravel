@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('mark_distributions', function (Blueprint $table) {
             $table->id();
+            $table->string('mark_distribution_name');
+            $table->string('description');
+            $table->integer('allot_mark');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

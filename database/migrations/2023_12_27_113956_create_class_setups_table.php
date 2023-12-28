@@ -19,6 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')->references('id')->on('sections');
 
+            $table->unsignedBigInteger('session_list_id');
+            $table->foreign('session_list_id')->references('id')->on('session_lists');
+
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

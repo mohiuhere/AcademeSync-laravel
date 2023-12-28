@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('exam_types', function (Blueprint $table) {
             $table->id();
+            $table->string('exam_type_name');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
