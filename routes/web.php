@@ -133,9 +133,14 @@ use App\Http\Controllers\SettingController;
     Route::post('gender/store', [SettingController::class, 'storeGender'])->name('store.gender');
     Route::get('gender/edit/{id}', [SettingController::class, 'editGenderIndex'])->name('');
     Route::post('gender/edit', [SettingController::class, 'editGender'])->name('edit.gender');
+    Route::get('gender/delete/{id}', [SettingController::class, 'deleteGender'])->name('delete.gender');
 
     Route::get('religion', [SettingController::class, 'religionIndex'])->name('religion.index');
     Route::get('religion/create', [SettingController::class, 'createReligionIndex'])->name('create.religion.index');
+    Route::post('religion/store', [SettingController::class, 'storeReligion'])->name('store.religion');
+    Route::get('religion/edit/{id}', [SettingController::class, 'editReligionIndex'])->name('');
+    Route::post('religion/edit', [SettingController::class, 'editReligion'])->name('edit.religion');
+    Route::get('religion/delete/{id}', [SettingController::class, 'deleteReligion'])->name('delete.gender');
 
     Route::get('blood-group', [SettingController::class, 'bloodGroupIndex'])->name('blood-group.index');
     Route::get('blood-group/create', [SettingController::class, 'createBloodGroupIndex'])->name('create.blood-group.index');

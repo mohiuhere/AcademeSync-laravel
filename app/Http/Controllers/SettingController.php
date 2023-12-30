@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\Gender;
+use App\Models\Religion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -89,7 +90,7 @@ class SettingController extends Controller
             $gender['gender_name'] = $req->gender_name;
             $gender['status'] = $req->gender_status;
             $gender->save();
-            return redirect()->back();
+            return redirect()->route('gender.index');
         }
 
         public function editGenderIndex($id){
@@ -112,30 +113,86 @@ class SettingController extends Controller
                     'status' => $req->gender_status,
                     ]
                 );
-            return redirect('/gender');
+            return redirect()->route('gender.index');
+        }
+
+        public function deleteGender($id){
+            DB::table('genders')->where('id', '=', $id)->delete();
+            return redirect()->route('gender.index');
         }
     //------------------------End Gender---------------------------//
 
-    public function religionIndex(){
-        return view('admin.pages.settings.religion');
-    }
 
-    public function createReligionIndex(){
-        return view('admin.pages.settings.religion-create');
-    }
+    //------------------------Religion---------------------------//
+        public function religionIndex(){
+            $datas = Religion::all();
+            return view('admin.pages.settings.religion', [
+                'datas' => $datas,
+            ]);
+        }
 
-    public function bloodGroupIndex(){
-        return view('admin.pages.settings.blood-group');
-    }
+        public function createReligionIndex(){
+            return view('admin.pages.settings.religion-create');
+        }
 
-    public function createBloodGroupIndex(){
-        return view('admin.pages.settings.blood-group-create');
-    }
+        public function storeReligion(Request $req){
+            $validated = $req->validate([
+                'religion_name' => 'required|string|max:255',
+            ]);
+            $gender = new Religion;
+            $gender['religion_name'] = $req->religion_name;
+            $gender['status'] = $req->religion_status;
+            $gender->save();
+            return redirect()->route('religion.index');
+        }
 
-    public function sessionIndex(){
-        return view('admin.pages.settings.session');
-    }
-    public function createSessionIndex(){
-        return view('admin.pages.settings.session-create');
-    }
+        public function editReligionIndex($id){
+            $religion = new Religion;
+            $data = $religion->find($id);
+            // dd($data);
+            return view('admin.pages.settings.religion-edit', [
+                'data' => $data,
+            ]);
+        }
+
+        public function editReligion(Request $req){
+            $validated = $req->validate([
+                'religion_name' => 'required|string|max:255',
+            ]);
+            DB::table('religions')
+                ->where('id', $req->id)
+                ->update([
+                    'religion_name' => $req->religion_name,
+                    'status' => $req->religion_status,
+                    ]
+                );
+            return redirect()->route('religion.index');
+        }
+
+        public function deleteReligion($id){
+            DB::table('religions')->where('id', '=', $id)->delete();
+            return redirect()->route('religion.index');
+        }
+    //------------------------End Religion---------------------------//
+
+
+    //------------------------Blood Group---------------------------//
+        public function bloodGroupIndex(){
+            return view('admin.pages.settings.blood-group');
+        }
+
+        public function createBloodGroupIndex(){
+            return view('admin.pages.settings.blood-group-create');
+        }
+    //------------------------End Blood Group---------------------------//
+    
+
+    //------------------------Session---------------------------//
+        public function sessionIndex(){
+            return view('admin.pages.settings.session');
+        }
+        public function createSessionIndex(){
+            return view('admin.pages.settings.session-create');
+        }
+    //------------------------End Session---------------------------//
 }

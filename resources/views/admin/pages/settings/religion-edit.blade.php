@@ -1,9 +1,9 @@
 @extends('admin.layouts.default')
 
 
-@section('title', 'Religions Create')
+@section('title', 'Genders Edit')
 
-@section('page-heading', 'Religions Create')
+@section('page-heading', 'Genders Edit')
 
 @section('bodys')
 
@@ -11,7 +11,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header  row justify-content-md-center m-0">
-        <h6 class="m-0 font-weight-bold text-primary col align-self-center">Religions Input</h6>
+        <h6 class="m-0 font-weight-bold text-primary col align-self-center">Genders Input</h6>
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -23,25 +23,25 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('store.religion') }}" method="post">
+        <form action="{{ route('edit.religion') }}" method="post">
             @csrf
             <div class="row">
+                <input type="hidden" name="id" value="{{ $data->id }}">
                 <div class="col">
-                    <label for="inputReligion" class="form-label">Name</label>
-                    <input type="text" name="religion_name" class="form-control" placeholder="Enter Religion Name" aria-label="Religion Name">
+                    <label for="inputGender" class="form-label">Name</label>
+                    <input value="{{ $data->religion_name }}" name="religion_name" type="text" class="form-control" placeholder="Enter Gender Name" aria-label="Gender Name">
                 </div>
                 <div class="col">
                     <label for="inputStatus" class="form-label">Status</label>
                     <select name="religion_status" id="inputStatus" class="form-control">
-                        <option value="true" selected>Active</option>
-                        <option value="false">Inactive</option>
+                        <option value="true" {{($data->status == 1) ? 'selected' : ''}}>Active</option>
+                        <option value="false" {{($data->status == 0) ? 'selected' : ''}}>Inactive</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Submit</button>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Update</button>
         </form>
     </div>
 </div>
-
 
 @stop
