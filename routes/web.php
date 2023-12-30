@@ -130,6 +130,9 @@ use App\Http\Controllers\SettingController;
 
     Route::get('gender', [SettingController::class, 'genderIndex'])->name('gender.index');
     Route::get('gender/create', [SettingController::class, 'createGenderIndex'])->name('create.gender.index');
+    Route::post('gender/store', [SettingController::class, 'storeGender'])->name('store.gender');
+    Route::get('gender/edit/{id}', [SettingController::class, 'editGenderIndex'])->name('');
+    Route::post('gender/edit', [SettingController::class, 'editGender'])->name('edit.gender');
 
     Route::get('religion', [SettingController::class, 'religionIndex'])->name('religion.index');
     Route::get('religion/create', [SettingController::class, 'createReligionIndex'])->name('create.religion.index');

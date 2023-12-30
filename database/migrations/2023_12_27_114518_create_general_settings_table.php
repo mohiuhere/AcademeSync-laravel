@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('general_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('school_name');
-            $table->unsignedBigInteger('school_phone');
-            $table->string('school_email');
-            $table->string('school_logo_url');
-            $table->string('school_address');
-            $table->string('school_about');
+            $table->string('school_name')->default('NOT-SET');
+            $table->string('school_phone')->default('NOT-SET');
+            $table->string('school_email')->default('NOT-SET');
+            $table->string('school_logo_url')->default('NOT-SET');
+            $table->string('school_address')->default('NOT-SET');
+            $table->string('school_about')->default('NOT-SET');
             $table->timestamps();
         });
     }

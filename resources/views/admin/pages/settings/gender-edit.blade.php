@@ -1,9 +1,9 @@
 @extends('admin.layouts.default')
 
 
-@section('title', 'Genders Create')
+@section('title', 'Genders Edit')
 
-@section('page-heading', 'Genders Create')
+@section('page-heading', 'Genders Edit')
 
 @section('bodys')
 
@@ -23,22 +23,23 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('store.gender') }}" method="post">
+        <form action="{{ route('edit.gender') }}" method="post">
             @csrf
             <div class="row">
+                <input type="hidden" name="id" value="{{ $data->id }}">
                 <div class="col">
                     <label for="inputGender" class="form-label">Name</label>
-                    <input name="gender_name" type="text" class="form-control" placeholder="Enter Gender Name" aria-label="Gender Name">
+                    <input value="{{ $data->gender_name }}" name="gender_name" type="text" class="form-control" placeholder="Enter Gender Name" aria-label="Gender Name">
                 </div>
                 <div class="col">
                     <label for="inputStatus" class="form-label">Status</label>
                     <select name="gender_status" id="inputStatus" class="form-control">
-                        <option value="true" selected>Active</option>
-                        <option value="false">Inactive</option>
+                        <option value="true" {{($data->status == 1) ? 'selected' : ''}}>Active</option>
+                        <option value="false" {{($data->status == 0) ? 'selected' : ''}}>Inactive</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Submit</button>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Update</button>
         </form>
     </div>
 </div>
