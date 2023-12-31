@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->double('basic_salary', 8, 2);
+            $table->string('emergency_contact');
+            $table->boolean('is_married');
             $table->date('joining_date');
             $table->boolean('status')->default(true);
             $table->timestamps();

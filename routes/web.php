@@ -32,8 +32,10 @@ use App\Http\Controllers\SettingController;
 //--------------------------------------------Staff----------------------------------------------------/
     Route::get('teacher', [StaffController::class, 'teacherIndex'])->name('teacher.index');
     Route::get('teacher/create', [StaffController::class, 'createTeacherIndex'])->name('create.teacher.index');
+    Route::post('teacher/store', [StaffController::class, 'storeTeacher'])->name('store.teacher');
 
     Route::get('assign-admin', [StaffController::class, 'assignAdminIndex'])->name('assign-admin.index');
+    Route::post('assign-admin/store', [StaffController::class, 'storeAssignAdmin'])->name('store.assign-admin');
 //------------------------------------------END Staff-------------------------------------------------/
 
 //-------------------------------------------Academic--------------------------------------------------/
@@ -144,9 +146,17 @@ use App\Http\Controllers\SettingController;
 
     Route::get('blood-group', [SettingController::class, 'bloodGroupIndex'])->name('blood-group.index');
     Route::get('blood-group/create', [SettingController::class, 'createBloodGroupIndex'])->name('create.blood-group.index');
+    Route::post('blood-group/store', [SettingController::class, 'storeBloodGroup'])->name('store.blood-group');
+    Route::get('blood-group/edit/{id}', [SettingController::class, 'editBloodGroupIndex'])->name('');
+    Route::post('blood-group/edit', [SettingController::class, 'editBloodGroup'])->name('edit.blood-group');
+    Route::get('blood-group/delete/{id}', [SettingController::class, 'deleteBloodGroup'])->name('delete.blood-group');
 
     Route::get('session', [SettingController::class, 'sessionIndex'])->name('session.index');
     Route::get('session/create', [SettingController::class, 'createSessionIndex'])->name('create.session.index');
+    Route::post('session/store', [SettingController::class, 'storeSession'])->name('store.session');
+    Route::get('session/edit/{id}', [SettingController::class, 'editSessionIndex'])->name('');
+    Route::post('session/edit', [SettingController::class, 'editSession'])->name('edit.session');
+    Route::get('session/delete/{id}', [SettingController::class, 'deleteSession'])->name('delete.session');
 //---------------------------------------- End Setting-----------------------------------------/
 
 Route::get('mark-register/mark-register-filter', function(){

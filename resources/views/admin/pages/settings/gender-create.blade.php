@@ -15,8 +15,8 @@
     </div>
     <div class="card-body">
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
+            <div class="alert alert-primary">
+                <ul class="text-danger">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -34,7 +34,7 @@
                     <label for="inputStatus" class="form-label">Status</label>
                     <select name="gender_status" id="inputStatus" class="form-control">
                         <option value="true" selected>Active</option>
-                        <option value="false">Inactive</option>
+                        <option value="false" >Inactive</option>
                     </select>
                 </div>
             </div>

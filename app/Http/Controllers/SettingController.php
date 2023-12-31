@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\Gender;
 use App\Models\Religion;
+use App\Models\BloodGroup;
+use App\Models\SessionList;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,15 +28,16 @@ class SettingController extends Controller
         public function storeGeneralSetting(Request $req){
             $validated = $req->validate([
                 'school_name' => 'required|string|max:255',
-                'school_phone' => 'required|string',
+                'school_phone' => 'required|string|max:11',
                 'school_email' => 'required|email',
                 'school_logo' => 'nullable|image',
                 'school_address' => 'required|string|max:500',
                 'school_about' => 'required|string|max:1000',
             ]);
-            $school_data = GeneralSetting::first();
-            $logo = $school_data['school_logo_url'];
+            
             if(request()->has('school_logo')){
+                $school_data = GeneralSetting::first();
+                $logo = $school_data['school_logo_url'];
                 $image_path = request()->file('school_logo')->store('school-profile', 'public');
                 $validate['image'] = $image_path;
 
@@ -71,10 +74,10 @@ class SettingController extends Controller
 
     //------------------------Gender---------------------------//
         public function genderIndex(){
-            $data = Gender::all();
+            $datas = Gender::all();
             // dd($data);
             return view('admin.pages.settings.gender', [
-                'datas' => $data,
+                'datas' => $datas,
             ]);
         }
 
@@ -178,21 +181,112 @@ class SettingController extends Controller
 
     //------------------------Blood Group---------------------------//
         public function bloodGroupIndex(){
-            return view('admin.pages.settings.blood-group');
+            $datas = BloodGroup::all();
+            return view('admin.pages.settings.blood-group', [
+                'datas' => $datas,
+            ]);
         }
 
         public function createBloodGroupIndex(){
             return view('admin.pages.settings.blood-group-create');
+        }
+
+        public function storeBloodGroup(Request $req){
+            $validated = $req->validate([
+                'name' => 'required|string|max:255',
+            ]);
+            $gender = new BloodGroup;
+            $gender['blood_group_name'] = $req->name;
+            $gender['status'] = $req->status;
+            $gender->save();
+            return redirect()->route('blood-group.index');
+        }
+
+        public function editBloodGroupIndex($id){
+            $blood = new BloodGroup;
+            $data = $blood->find($id);
+            return view('admin.pages.settings.blood-group-edit', [
+                'data' => $data,
+            ]);
+        }
+
+        public function editBloodGroup(Request $req){
+            $validated = $req->validate([
+                'name' => 'required|string|max:255',
+            ]);
+            DB::table('blood_groups')
+                ->where('id', $req->id)
+                ->update([
+                    'blood_group_name' => $req->name,
+                    'status' => $req->gender_status,
+                    ]
+                );
+            return redirect()->route('blood-group.index');
+        }
+
+        public function deleteBloodGroup($id){
+            DB::table('blood_groups')->where('id', '=', $id)->delete();
+            return redirect()->route('blood-group.index');
         }
     //------------------------End Blood Group---------------------------//
     
 
     //------------------------Session---------------------------//
         public function sessionIndex(){
-            return view('admin.pages.settings.session');
+            $datas = SessionList::all();
+            return view('admin.pages.settings.session', [
+                'datas' => $datas,
+            ]);
         }
         public function createSessionIndex(){
             return view('admin.pages.settings.session-create');
+        }
+
+        public function storeSession(Request $req){
+            $validated = $req->validate([
+                'name' => 'required|string|max:255',
+                'start_date' => 'required|date',
+                'end_date'   => 'required|date|after:start_date'
+            ]);
+            $session = new SessionList;
+            $session['session_list_name'] = $req->name;
+            $session['status'] = $req->status;
+            $session['start_date'] = $req->start_date;
+            $session['end_date'] = $req->end_date;
+            $session->save();
+            return redirect()->route('session.index');
+            // dd($req);
+        }
+
+        public function editSessionIndex($id){
+            $session = new SessionList;
+            $data = $session->find($id);
+            return view('admin.pages.settings.session-edit', [
+                'data' => $data,
+            ]);
+        }
+
+        public function editSession(Request $req){
+            $validated = $req->validate([
+                'name' => 'required|string|max:255',
+                'start_date' => 'required|date',
+                'end_date'   => 'required|date|after:start_date'
+            ]);
+            DB::table('session_lists')
+            ->where('id', $req->id)
+            ->update([
+                'session_list_name' => $req->name,
+                'status' => $req->gender_status,
+                'start_date' => $req->start_date,
+                'end_date' => $req->end_date,
+                ]
+            );
+            return redirect()->route('session.index');
+        }
+
+        public function deleteSession($id){
+            DB::table('session_lists')->where('id', '=', $id)->delete();
+            return redirect()->route('session.index');
         }
     //------------------------End Session---------------------------//
 }

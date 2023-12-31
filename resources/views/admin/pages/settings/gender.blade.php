@@ -47,8 +47,8 @@
                                         <i class="fa-solid fa-list"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ url('religion/edit/'.$data->id) }}">Edit</a>
-                                        <a class="dropdown-item" href="{{ url('religion/delete/'.$data->id) }}">Delete</a>
+                                        <a class="dropdown-item" href="{{ url('gender/edit/'.$data->id) }}">Edit</a>
+                                        <a class="dropdown-item" href="{{ url('gender/delete/'.$data->id) }}">Delete</a>
                                     </div>
                                 </div>
                             </td>

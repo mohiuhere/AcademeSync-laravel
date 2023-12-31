@@ -36,40 +36,30 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>2023</td>
-                        <td>01 Jan 2023</td>
-                        <td>31 Dec 2023</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-list"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td>{{ $data->session_list_name }}</td>
+                            <td>{{ $data->start_date }}</td>
+                            <td>{{ $data->end_date }}</td>
+                            <td>
+                                @if($data->status)
+                                    <span class="badge bg-primary text-white">Active</span>
+                                @else
+                                    <span class="badge bg-danger text-white">Unactive</span>
+                                @endif
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-list"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('session/edit/'.$data->id) }}">Edit</a>
+                                        <a class="dropdown-item" href="{{ url('session/delete/'.$data->id) }}">Delete</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2023</td>
-                        <td>01 Jan 2023</td>
-                        <td>31 Dec 2023</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-list"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
