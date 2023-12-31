@@ -16,7 +16,8 @@ class StaffController extends Controller
     //---------------------Teacher-----------------------------------------//
         public function teacherIndex(){
             $teacher = DB::select(
-                "SELECT teachers.teacher_uid as teacher_uid,
+                "SELECT teachers.id as id,
+                teachers.teacher_uid as teacher_uid,
                 users.first_name as first_name,
                 users.last_name as last_name,
                 users.mobile as mobile,
@@ -92,6 +93,29 @@ class StaffController extends Controller
 
                 return redirect()->route('teacher.index');
             }
+        }
+
+        public function editTeacherIndex($id){
+            $teacher = Teacher::find($id);
+            $user = User::find($teacher->user_id);
+            $religion = Religion::where('status', '=', 'true')->get();
+            $blood_group = BloodGroup::where('status', '=', 'true')->get();
+            $gender = Gender::where('status', '=', 'true')->get();
+            return view('admin.pages.staff.teacher-edit', [
+                'teacher' => $teacher,
+                'user' => $user,
+                'religions' => $religion,
+                'blood_groups' => $blood_group,
+                'genders' => $gender,
+            ]);
+        }
+
+        public function editTeacher(){
+
+        }
+
+        public function deleteTeacher(){
+
         }
     //---------------------End Teacher-----------------------------------------//
 

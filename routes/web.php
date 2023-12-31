@@ -33,6 +33,9 @@ use App\Http\Controllers\SettingController;
     Route::get('teacher', [StaffController::class, 'teacherIndex'])->name('teacher.index');
     Route::get('teacher/create', [StaffController::class, 'createTeacherIndex'])->name('create.teacher.index');
     Route::post('teacher/store', [StaffController::class, 'storeTeacher'])->name('store.teacher');
+    Route::get('teacher/edit/{id}', [StaffController::class, 'editTeacherIndex'])->name('edit.teacher.index');
+    Route::post('teacher/edit', [StaffController::class, 'editTeacher'])->name('edit.teacher');
+    Route::get('teacher/delete/{id}', [StaffController::class, 'deleteTeacher'])->name('delete.teacher');
 
     Route::get('assign-admin', [StaffController::class, 'assignAdminIndex'])->name('assign-admin.index');
     Route::post('assign-admin/store', [StaffController::class, 'storeAssignAdmin'])->name('store.assign-admin');
