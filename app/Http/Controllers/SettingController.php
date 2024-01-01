@@ -18,7 +18,7 @@ class SettingController extends Controller
         public function generalSettingIndex(){
             $school_data = GeneralSetting::first();
             $img_url = url('storage/'.$school_data['school_logo_url']);
-            // dd($school_data);
+            // dd($img_url);
             return view('admin.pages.settings.general-setting', [
                 'data' => $school_data,
                 'img_url' => $img_url,

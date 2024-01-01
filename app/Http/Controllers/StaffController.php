@@ -10,6 +10,7 @@ use App\Models\Religion;
 use App\Models\Gender;
 use App\Models\BloodGroup;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
@@ -101,21 +102,131 @@ class StaffController extends Controller
             $religion = Religion::where('status', '=', 'true')->get();
             $blood_group = BloodGroup::where('status', '=', 'true')->get();
             $gender = Gender::where('status', '=', 'true')->get();
+
+            $img_url = url('storage/'.$user->image_url);
+
             return view('admin.pages.staff.teacher-edit', [
                 'teacher' => $teacher,
                 'user' => $user,
                 'religions' => $religion,
                 'blood_groups' => $blood_group,
                 'genders' => $gender,
+                'img_url' => $img_url,
             ]);
         }
 
-        public function editTeacher(){
+        public function editTeacher(Request $req){
+            $validated = $req->validate([
+                'id' => 'required|numeric',
+                'teacher_uid' => 'required|numeric',
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'mobile' => 'required|string|max:11',
+                'email' => 'required|email|max:255',
+                'date_of_birth' => 'required|date',
+                'blood_group_id' => 'required|numeric',
+                'gender_id' => 'required|numeric',
+                'religion_id' => 'required|numeric',
+                'salary' => 'required|numeric',
+                'emergency_contact' => 'required|string|max:11',
+                'is_married' => 'required|boolean',
+                'joining_date' => 'required|date',
+                'user_img' => 'nullable|image',
+                'status' => 'required|boolean',
+                'address' => 'required|string|max:255',
+            ]);
 
+            $teacher = [
+                $req->teacher_uid,
+                $req->emergency_contact,
+                $req->salary,
+                $req->is_married,
+                $req->joining_date,
+                $req->status,
+                $req->id,
+            ];
+            DB::update('UPDATE teachers SET 
+                    teacher_uid = ?,
+                    emergency_contact = ?,
+                    basic_salary = ?,
+                    is_married = ?,
+                    joining_date = ?,
+                    status = ?
+            WHERE id = ?', $teacher);
+
+
+            if(request()->has('user_img')){
+                $user = User::find($req->id);
+                $img = $user->image_url;
+
+                $image_path = request()->file('user_img')->store('user-profile', 'public');
+                $validate['image'] = $image_path;
+
+                Storage::disk('public')->delete($img);
+
+                $user_id = Teacher::find($req->id);
+                $user = [
+                    $req->first_name,
+                    $req->last_name,
+                    $req->mobile,
+                    $req->email,
+                    $image_path,
+                    $req->date_of_birth,
+                    $req->blood_group_id,
+                    $req->gender_id,
+                    $req->religion_id,
+                    $req->address,
+                    $user_id->user_id
+                ];
+                DB::update('UPDATE users SET 
+                    first_name = ?,
+                    last_name = ?,
+                    mobile = ?,
+                    email = ?,
+                    image_url = ?,
+                    date_of_birth = ?,
+                    blood_group_id = ?,
+                    gender_id = ?,
+                    religion_id = ?,
+                    address = ?
+                WHERE id = ?', $user);
+
+            }else{
+                $user_id = Teacher::find($req->id);
+                $user = [
+                    $req->first_name,
+                    $req->last_name,
+                    $req->mobile,
+                    $req->email,
+                    $req->date_of_birth,
+                    $req->blood_group_id,
+                    $req->gender_id,
+                    $req->religion_id,
+                    $req->address,
+                    $user_id->user_id
+                ];
+                DB::update('UPDATE users SET 
+                    first_name = ?,
+                    last_name = ?,
+                    mobile = ?,
+                    email = ?,
+                    date_of_birth = ?,
+                    blood_group_id = ?,
+                    gender_id = ?,
+                    religion_id = ?,
+                    address = ?
+                WHERE id = ?', $user);
+            }
+
+            return redirect()->route('teacher.index');
         }
 
-        public function deleteTeacher(){
-
+        public function deleteTeacher($id){
+            $teacher = Teacher::find($id);
+            // dd($teacher);
+            DB::table('teachers')->where('id', '=', $id)->delete();
+            DB::table('users')->where('id', '=', $teacher->user_id)->delete();
+            return redirect()->route('teacher.index');
         }
     //---------------------End Teacher-----------------------------------------//
 

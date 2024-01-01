@@ -49,7 +49,7 @@
                 <div class="col">
                     <label for="inputBlood" class="form-label">Blood</label>
                     <select name="blood_group_id" id="inputBlood" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($blood_groups as $blood_group)
                         <option value="{{ $blood_group->id }}">{{ $blood_group->blood_group_name }}</option>
                         @endforeach
@@ -58,7 +58,7 @@
                 <div class="col">
                     <label for="inputGender" class="form-label">Gender</label>
                     <select name="gender_id"  id="inputGender" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($genders as $gender)
                         <option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
                         @endforeach
@@ -67,7 +67,7 @@
                 <div class="col">
                     <label for="inputReligion" class="form-label">Religion</label>
                     <select name="religion_id"  id="inputReligion" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($religions as $religion)
                         <option value="{{ $religion->id }}">{{ $religion->religion_name }}</option>
                         @endforeach

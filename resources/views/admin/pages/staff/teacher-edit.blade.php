@@ -12,11 +12,13 @@
 <div class="card shadow mb-4">
     <div class="card-header  row justify-content-md-center m-0">
         <h6 class="m-0 font-weight-bold text-primary col align-self-center">Teacher Create Input</h6>
+        <img src="{{ $img_url }}" class="img-fluid img-thumbnail" style="width:50px;height:50px;">
     </div>
     <div class="card-body">
         <form action="{{ route('edit.teacher') }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
+                <input type="hidden" name="id" value="{{ $teacher->id }}">
                 <div class="col">
                     <label for="inputTeacherID" class="form-label">Teacher ID</label>
                     <input value="{{ $teacher->teacher_uid }}" name="teacher_uid" type="number" class="form-control" placeholder="Enter Teacher ID" aria-label="Teacher ID">
@@ -49,7 +51,7 @@
                 <div class="col">
                     <label for="inputBlood" class="form-label">Blood</label>
                     <select name="blood_group_id" id="inputBlood" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($blood_groups as $blood_group)
                         <option value="{{ $blood_group->id }}" {{($blood_group->id == $user->blood_group_id) ? 'selected' : ''}}>
                             {{ $blood_group->blood_group_name }}
@@ -60,7 +62,7 @@
                 <div class="col">
                     <label for="inputGender" class="form-label">Gender</label>
                     <select name="gender_id"  id="inputGender" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($genders as $gender)
                         <option value="{{ $gender->id }}" {{($gender->id == $user->gender_id) ? 'selected' : ''}}>
                             {{ $gender->gender_name }}
@@ -71,7 +73,7 @@
                 <div class="col">
                     <label for="inputReligion" class="form-label">Religion</label>
                     <select name="religion_id"  id="inputReligion" class="form-control">
-                        <option value="" selected>SELETE</option>
+                        <option value="" selected>SELECT</option>
                         @foreach ($religions as $religion)
                         <option value="{{ $religion->id }}" {{($religion->id == $user->religion_id) ? 'selected' : ''}}>
                             {{ $religion->religion_name }}
