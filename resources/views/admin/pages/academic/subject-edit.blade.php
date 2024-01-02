@@ -1,9 +1,9 @@
 @extends('admin.layouts.default')
 
 
-@section('title', 'Subject Create')
+@section('title', 'Subject Edit')
 
-@section('page-heading', 'Subject Create')
+@section('page-heading', 'Subject Edit')
 
 @section('bodys')
 
@@ -22,35 +22,36 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('store.subject') }}" method="post">
+        <form action="{{ route('edit.subject') }}" method="post">
             @csrf
             <div class="row">
+                <input type="hidden" name="id" value="{{ $data->id }}">
                 <div class="col">
                     <label for="inputSubjectName" class="form-label">Name</label>
-                    <input name="subject_name" type="text" class="form-control" placeholder="Subject Name" aria-label="Subject Name">
+                    <input value="{{ $data->subject_name }}" name="subject_name" type="text" class="form-control" placeholder="Subject Name" aria-label="Subject Name">
                 </div>
                 <div class="col">
                     <label for="inputSubjectCode" class="form-label">Code</label>
-                    <input name="subject_code" type="text" class="form-control" placeholder="Subject Code" aria-label="Subject Code">
+                    <input value="{{ $data->subject_code }}" name="subject_code" type="text" class="form-control" placeholder="Subject Code" aria-label="Subject Code">
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
                     <label for="inputStatus" class="form-label">Type</label>
                     <select name="subject_type" id="inputStatus" class="form-control">
-                        <option value="theory">Theory</option>
-                        <option value="practical">Practical </option>
+                        <option value="theory" {{($data->subject_type == 'theory') ? 'selected' : ''}}>Theory</option>
+                        <option value="practical" {{($data->subject_type == 'practical') ? 'selected' : ''}}>Practical </option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="inputStatus" class="form-label">Status</label>
                     <select name="status" id="inputStatus" class="form-control">
-                        <option value="1" selected>Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1" {{($data->status == 1) ? 'selected' : ''}}>Active</option>
+                        <option value="0" {{($data->status == 0) ? 'selected' : ''}}>Inactive</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Submit</button>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fa-regular fa-floppy-disk"></i> Update</button>
         </form>
     </div>
 </div>

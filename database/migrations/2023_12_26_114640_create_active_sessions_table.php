@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('active_sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('subject_name');
-            $table->string('subject_code');
-            $table->string('subject_type');
-            $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('active_session_list_id');
+            $table->foreign('active_session_list_id')->references('id')->on('session_lists');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('active_sessions');
     }
 };

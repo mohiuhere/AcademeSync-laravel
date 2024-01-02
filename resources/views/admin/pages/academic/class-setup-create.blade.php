@@ -19,24 +19,31 @@
             <div class="row">
                 <div class="col">
                     <label for="inputState" class="form-label">Class</label>
-                    <select name="" id="inputState" class="form-control">
+                    <select name="class_id" id="inputState" class="form-control">
                         <option value="" selected>SELECTE</option>
-                        <option value="">ONE</option>
-                        <option value="">TWO</option>
+                        @foreach ($classes as $class)
+                        <option value="{{ $class->id }}">{{ $class->class_name }}</option>
+                        @endforeach
+
                     </select>
                 </div>
                 <div class="col">
                     <h6>Select Sections:</h6>
-                    <label style="font-size: 20px"><input style="height: 20px;width: 20px;" type="checkbox" value="1" name="sections[]"> A </label>        
-                    <label style="font-size: 20px"><input style="height: 20px;width: 20px;" type="checkbox" value="2" name="sections[]"> B </label>       
+                    @foreach ($sections as $section)
+                    <label style="font-size: 20px">
+                        <input style="height: 20px;width: 20px;" type="checkbox" value="{{ $section->id }} " name="sections_id[]">
+                         {{ $section->section_name }} 
+                        </label>        
+                    @endforeach
+     
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-6">
                     <label for="inputStatus" class="form-label">Status</label>
-                    <select id="inputStatus" class="form-control">
-                        <option selected>Active</option>
-                        <option>Inactive</option>
+                    <select name="status" id="inputStatus" class="form-control">
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
                     </select>
                 </div>
             </div>

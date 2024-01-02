@@ -8,6 +8,7 @@ use App\Models\Gender;
 use App\Models\Religion;
 use App\Models\BloodGroup;
 use App\Models\SessionList;
+use App\Models\ActiveSession;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -167,8 +168,8 @@ class SettingController extends Controller
                 ->update([
                     'religion_name' => $req->religion_name,
                     'status' => $req->religion_status,
-                    ]
-                );
+                ]
+            );
             return redirect()->route('religion.index');
         }
 
@@ -240,6 +241,14 @@ class SettingController extends Controller
         }
         public function createSessionIndex(){
             return view('admin.pages.settings.session-create');
+        }
+
+        public function activeSession(Request $req){
+            $validated = $req->validate([
+                'active_session_id' => 'required|numeric',
+            ]);
+            DB::update('UPDATE active_sessions SET active_session_list_id = ? WHERE id = ?', [$req->active_session_id, 1]);
+            session(['active_session_list_id' => $req->active_session_id]);
         }
 
         public function storeSession(Request $req){
