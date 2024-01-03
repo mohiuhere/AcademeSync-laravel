@@ -21,6 +21,7 @@
                     <tr>
                         <th>Class</th>
                         <th>Section</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                     <tr>
                         <th>Class</th>
                         <th>Section</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -36,7 +38,6 @@
                     <tr>
                         <td>{{ $class_setup->class_name }}</td>
                         <td>
-                            {{-- {{ $class_setup->sections_id }} --}}
                                 @foreach (json_decode($class_setup->sections_id) as $section_id)
 
                                 @foreach ($sections as $section)
@@ -46,6 +47,13 @@
                                 @endforeach
                                     
                                 @endforeach
+                        </td>
+                        <td>
+                            @if($class_setup->status)
+                                <span class="badge bg-primary text-white">Active</span>
+                            @else
+                                <span class="badge bg-danger text-white">Unactive</span>
+                            @endif
                         </td>
                         <td>
                             <div class="dropdown">

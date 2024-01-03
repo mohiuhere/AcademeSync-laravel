@@ -184,7 +184,7 @@ class AcademiController extends Controller
     //---------------------------------------CLASS SETUP---------------------------------------------------/
     
         public function classSetupIndex(){
-            $class_setups = DB::select('SELECT class_setups.id, classes.class_name, class_setups.sections_id
+            $class_setups = DB::select('SELECT class_setups.id, classes.class_name, class_setups.sections_id, class_setups.status
             FROM class_setups
             JOIN classes ON class_setups.class_id = classes.id;');
 
