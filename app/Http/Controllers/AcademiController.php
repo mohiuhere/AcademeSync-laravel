@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\Section;
 use App\Models\Subject;
+use App\Models\ClassSetup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -183,7 +184,16 @@ class AcademiController extends Controller
     //---------------------------------------CLASS SETUP---------------------------------------------------/
     
         public function classSetupIndex(){
-            return view('admin.pages.academic.class-setup');
+            $class_setups = DB::select('SELECT class_setups.id, classes.class_name, class_setups.sections_id
+            FROM class_setups
+            JOIN classes ON class_setups.class_id = classes.id;');
+
+            $sections = Section::all();
+
+            return view('admin.pages.academic.class-setup', [
+                'class_setups'=> $class_setups,
+                'sections'=> $sections
+            ]);
         }
 
         public function createClassSetupIndex(){
@@ -201,27 +211,56 @@ class AcademiController extends Controller
                 'sections_id' => "required|array|min:1",
                 'status' => 'required|boolean'
             ]);
-            // dd($validated);
+
             $active_session_id = session()->get('active_session_list_id');
 
-            foreach ($req->sections_id as $section_id){
-                DB::insert("INSERT INTO class_setups (class_id, section_id, session_list_id, status)
+            $valid = ClassSetup::where('class_id', $req->class_id)->where('session_list_id', $active_session_id)->exists();
+
+            if( !$valid ){
+                DB::insert("INSERT INTO class_setups (class_id, sections_id, session_list_id, status)
                 VALUES (?, ?, ?, ?);", [
                     $req->class_id,
-                    $section_id,
+                    json_encode($req->sections_id),
                     $active_session_id,
                     $req->status
                 ]);
+                return redirect()->route("class-setup.index");
+                
             }
-            
+            return redirect()->back();  
         }
 
-        public function editClassSetup(){
+        public function editClassSetupIndex($id){
+            $class = Classes::where('status','=','true')->get();
+            $section = Section::where('status','=','true')->get();
+            $class_setup = ClassSetup::find( $id );
+            return view('admin.pages.academic.class-setup-edit', [
+                'classes'=> $class,
+                'sections'=> $section,
+                'data' => $class_setup
+            ]);
+        }
+        public function editClassSetup(Request $req){
+            $validated = $req->validate([
+                'class_id' => 'required|numeric',
+                'sections_id' => "required|array|min:1",
+                'status' => 'required|boolean'
+            ]);
+            DB::table('class_setups')
+            ->where('id', $req->id)
+            ->update([
+                    'class_id' => $req->class_id,
+                    'sections_id' => json_encode($req->sections_id),
+                    'status' => $req->status
+                ]
+            );
 
+            return redirect()->route("class-setup.index");
         }
 
-        public function deleteClassSetup(){
-
+        public function deleteClassSetup($id){
+            DB::table('class_setups')->where('id', '=', $id)->delete();
+            return redirect()->route('class-setup.index');
         }
 
     //-------------------------------------END CLASS SETUP-------------------------------------------------/

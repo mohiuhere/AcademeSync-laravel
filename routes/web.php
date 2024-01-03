@@ -66,10 +66,11 @@ Route::post('subject/edit', [AcademiController::class, 'editSubject'])->name('ed
 Route::get('subject/delete/{id}', [AcademiController::class, 'deleteSubject'])->name('');
 
 
-Route::get('class-setup', [AcademiController::class, 'classSetupIndex'])->name('class.setup.index');
+Route::get('class-setup', [AcademiController::class, 'classSetupIndex'])->name('class-setup.index');
 Route::get('class-setup/create', [AcademiController::class, 'createClassSetupIndex'])->name('create.class-setup.index');
 Route::post('class-setup/store', [AcademiController::class, 'storeClassSetup'])->name('store.class-setup');
-Route::get('class-setup/edit/{id}', [AcademiController::class, 'editClassSetup'])->name('');
+Route::get('class-setup/edit/{id}', [AcademiController::class, 'editClassSetupIndex'])->name('');
+Route::post('class-setup/edit', [AcademiController::class, 'editClassSetup'])->name('edit.class-setup');
 Route::get('class-setup/delete/{id}', [AcademiController::class, 'deleteClassSetup'])->name('');
 
 

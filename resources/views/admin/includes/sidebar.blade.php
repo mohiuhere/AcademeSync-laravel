@@ -64,7 +64,7 @@
                     <a class="collapse-item" href={{route('subject.index')}}>Subject</a>
                 </strong>
                 <strong>
-                    <a class="collapse-item" href={{route('class.setup.index')}}>Class Setup</a>
+                    <a class="collapse-item" href={{route('class-setup.index')}}>Class Setup</a>
                 </strong>
                 <strong>
                     <a class="collapse-item" href={{route('subject.assign.index')}}>Subject Assign</a>
