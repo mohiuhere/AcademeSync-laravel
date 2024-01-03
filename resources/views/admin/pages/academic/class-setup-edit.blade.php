@@ -41,10 +41,20 @@
                 </div>
                 <div class="col">
                     <h6>Select Sections:</h6>
+
                     @foreach ($sections as $section)
+
                     <label style="font-size: 20px">
-                        <input style="height: 20px;width: 20px;" type="checkbox" value="{{ $section->id }}" {{($data->class_id == $section->id) ? 'checked' : ''}} name="sections_id[]">
-                         {{ $section->section_name }} 
+                        <input style="height: 20px;width: 20px;" type="checkbox" value="{{ $section->id }}" 
+
+                            @foreach (json_decode($data->sections_id) as $section_id)
+                                {{($section_id == $section->id) ? 'checked' : ''}}
+                            @endforeach
+
+                            name="sections_id[]">
+
+                            {{ $section->section_name }}
+                            
                         </label>        
                     @endforeach
      
