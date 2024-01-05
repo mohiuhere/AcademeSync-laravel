@@ -23,11 +23,9 @@ return new class extends Migration
             $table->unsignedBigInteger('session_list_id');
             $table->foreign('session_list_id')->references('id')->on('session_lists');
 
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->json('subjects_id');
 
-            $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->json('teachers_id');
 
             $table->timestamps();
         });

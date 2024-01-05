@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\SettingController;
+use App\Models\ClassSetup;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -166,6 +167,32 @@ Route::get('session/edit/{id}', [SettingController::class, 'editSessionIndex'])-
 Route::post('session/edit', [SettingController::class, 'editSession'])->name('edit.session');
 Route::get('session/delete/{id}', [SettingController::class, 'deleteSession'])->name('delete.session');
 //---------------------------------------- End Setting-----------------------------------------/
+
+// routes/web.php
+
+Route::get('/getSubjectAssignData/{subject_assign_id}', function($subjectAssignId)
+{
+    // Fetch data from the database based on $subjectAssignId
+    // Replace this with your actual logic to fetch data
+    // Dummy data for demonstration purposes
+    $data = [
+        ['teacher' => 'gg', 'subject' => 'Bangla'],
+        ['teacher' => 'John', 'subject' => 'Math'],
+    ];
+
+    return view('admin.partials.subject_assign_data', ['data' => $data]);
+});
+
+
+
+Route::get('/get-data/{classId}', function($classId){
+
+    $data = ClassSetup::where('class_id', $classId)->get();
+    return response()->json($data);
+
+
+})->name('get-data');
+
 
 Route::get('mark-register/mark-register-filter', function(){
     $data = [[

@@ -5,6 +5,8 @@ use App\Models\Classes;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Models\ClassSetup;
+use App\Models\Teacher;
+use App\Models\SubjectAssign;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -267,30 +269,71 @@ class AcademiController extends Controller
 
     //---------------------------------------SUBJECT ASSIGN------------------------------------------------/
         public function subjectAssignIndex(){
-            return view('admin.pages.academic.subject-assign');
+            $subject_assign = DB::select('SELECT
+            subject_assigns.id,
+            classes.class_name AS class_name,
+            sections.section_name AS section_name
+            FROM
+                subject_assigns
+            JOIN
+                classes ON subject_assigns.class_id = classes.id
+            JOIN
+                sections ON subject_assigns.section_id = sections.id');
+
+            // print_r($subject_assign);
+            return view('admin.pages.academic.subject-assign', [
+                'subject_assigns'=> $subject_assign
+            ]);
         }
 
         public function createSubjectAssignIndex(){
-            // Assuming $authors is an array of authors with id and name properties
-            $subjects = [
-                ['id' => 1, 'name' => 'Bangla'],
-                ['id' => 2, 'name' => 'English'],
-                // Add more authors as needed
-            ];
+            $class = Classes::where('status','=','true')->get();
+            $section = Section::where('status','=','true')->get();
+            $subjects = Subject::where('status','=','true')->get();
+            $teachers_data = DB::select(
+                'SELECT teachers.user_id, users.first_name, users.last_name
+                FROM teachers
+                JOIN users ON teachers.user_id = users.id
+                WHERE status = true;');
 
-            $teachers = [
-                ['id' => 1, 'name' => 'Sunny'],
-                ['id' => 2, 'name' => 'Musa'],
-                // Add more authors as needed
-            ];
+            $teachers = [];
+            foreach ($teachers_data as $item) {
+                // Assuming you want to construct the 'name' as 'First Name + Last Name'
+                $name = $item->first_name . ' ' . $item->last_name;
+
+                // Add an entry to the $teachers array
+                $teachers[] = ['id' => $item->user_id, 'name' => $name];
+            }
+
             return view('admin.pages.academic.subject-assign-create',[
+                'sections' => $section,
+                'classes'=> $class,
                 'teachers' => $teachers,
                 'subjects' => $subjects
             ]);
         }
 
         public function storeSubjectAssign(Request $req){
-            dd($req);
+            $validated = $req->validate([
+                'class_id'=> 'required|numeric',
+                'section_id' => 'required|numeric',
+                'subject_id' => 'required|array|min:1',
+                'subject_id.*' => 'required',
+                'teacher_id' => 'required|array|min:1',
+                'teacher_id.*' => 'required',
+            ]);
+            $active_session_id = session()->get('active_session_list_id');
+            DB::insert(
+                'INSERT INTO subject_assigns 
+                (class_id, section_id, session_list_id, subjects_id, teachers_id) 
+                VALUES (?, ?, ?, ?, ?)', [
+                    $req->class_id,
+                    $req->section_id,
+                    $active_session_id,
+                    json_encode($req->subject_id),
+                    json_encode($req->teacher_id),
+                ]);
+            return redirect()->route('subject.assign.index');
         }
 
         public function editSubjectAssign(){

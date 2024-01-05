@@ -22,7 +22,6 @@
                     <tr>
                         <th>Class (Section)</th>
                         <th>Subject & Teacher</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -30,20 +29,19 @@
                     <tr>
                         <th>Class (Section)</th>
                         <th>Subject & Teacher</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                  @foreach ($subject_assigns as $subject_assign)
                     <tr>
-                        <td>ONE (A)</td>
+                        <td>{{ $subject_assign->class_name }} ({{ $subject_assign->section_name }})</td>
                         <td>
                             <!-- Button trigger modal: data-target="#staticBackdrop-{id}"-->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacher-subject-1">
+                            <button type="button" id="#teacher-subject-{{ (string)$subject_assign->id }}" class="btn btn-primary" data-toggle="modal" data-target="#teacher-subject-{{ (string)$subject_assign->id }}">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
                         </td>
-                        <td>Active</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -56,27 +54,8 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>ONE (B)</td>
-                        <td>
-                            <!-- Button trigger modal: data-target="#staticBackdrop-{id}"-->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacher-subject-2">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                        </td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-list"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                  @endforeach
+
                 </tbody>
             </table>
         </div>
@@ -85,8 +64,9 @@
 
 
 
-<!-- Modal: id="teacher-sunject-{id}" -->
-<div class="modal fade" id="teacher-subject-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal: id="teacher-subject-{id}" -->
+@foreach ($subject_assigns as $subject_assign)
+<div class="modal fade" id="teacher-subject-{{ (string)$subject_assign->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -103,61 +83,10 @@
               <th scope="col">Subject</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
+          <tbody id="subjectAssignDataBody">
+            <!-- Dynamic content will be placed here -->
           </tbody>
-      </table>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -166,86 +95,28 @@
   </div>
 </div>
 
+@endforeach
 
-<!-- Modal: id="teacher-sunject-{id}" -->
-<div class="modal fade" id="teacher-subject-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Teacher</th>
-              <th scope="col">Subject</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>Bangla</td>
-            </tr>
-          </tbody>
-      </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<script>
+  $(document).ready(function() {
+      $('.btn-primary').on('click', function() {
+          var modalId = $(this).data('target');
+          var subjectAssignId = modalId.split('-').pop();
+          // AJAX request to fetch data from the server
+          $.ajax({
+              url: '/getSubjectAssignData/' + subjectAssignId,
+              type: 'GET',
+              success: function(response) {
+                  // Update modal body with the fetched data
+                  $(modalId + ' #subjectAssignDataBody').html(response);
+              },
+              error: function() {
+                  console.log('Error fetching data from the server');
+              }
+          });
+      });
+  });
+  </script>
 
 @stop
