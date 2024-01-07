@@ -344,7 +344,7 @@ class AcademiController extends Controller
         }
 
         public function editSubjectAssign(){
-
+            // not done
         }
 
         public function deleteSubjectAssign($id){

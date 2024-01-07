@@ -10039,6 +10039,11 @@ a:focus {
   align-items: center;
   justify-content: center;
 }
+.border-x-primary {
+  border-left: 0.25rem solid#8e7cc3!important;
+  border-right: 0.25rem solid#8e7cc3!important;
+}
+
 
 .border-left-primary {
   border-left: 0.25rem solid#8e7cc3!important;
@@ -10046,6 +10051,10 @@ a:focus {
 
 .border-bottom-primary {
   border-bottom: 0.25rem solid#8e7cc3!important;
+}
+
+.border-top-primary {
+  border-top: 0.25rem solid#8e7cc3!important;
 }
 
 .border-left-secondary {
