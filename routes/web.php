@@ -9,6 +9,10 @@ use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\SettingController;
 use App\Models\ClassSetup;
+use App\Models\SubjectAssign;
+use App\Models\Subject;
+use App\Models\Teacher;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -172,15 +176,49 @@ Route::get('session/delete/{id}', [SettingController::class, 'deleteSession'])->
 
 Route::get('/getSubjectAssignData/{subject_assign_id}', function($subjectAssignId)
 {
-    // Fetch data from the database based on $subjectAssignId
-    // Replace this with your actual logic to fetch data
-    // Dummy data for demonstration purposes
-    $data = [
-        ['teacher' => 'gg', 'subject' => 'Bangla'],
-        ['teacher' => 'John', 'subject' => 'Math'],
+    
+    $subject_assigns = SubjectAssign::find($subjectAssignId);
+    // Assuming $db is your database connection
+
+    // Fetch subject names
+    $subjectNames = [];
+
+    $subjectIds = $subject_assigns->subjects_id;
+    $subjectIds = json_decode($subjectIds);
+
+    foreach ($subjectIds as $subjectId) {
+        $subjectName = Subject::find($subjectId);
+        // dd($subjectName->subject_name);
+        array_push($subjectNames, $subjectName->subject_name);
+    }
+
+    // Fetch teacher names
+    $teacherNames = [];
+
+    $teacherIds = $subject_assigns->teachers_id;
+    $teacherIds = json_decode($teacherIds);
+
+    foreach ($teacherIds as $teacherId) {
+        $teacherName = Teacher::find($teacherId);
+        $user = User::find($teacherName->user_id);
+        array_push($teacherNames, $user->first_name.' '.$user->last_name);
+    }
+
+    $data= [  
+        $subjectNames,
+        $teacherNames,
     ];
 
-    return view('admin.partials.subject_assign_data', ['data' => $data]);
+    $formattedData = [];
+
+    foreach ($data[0] as $index => $subject) {
+        $teacher = $data[1][$index];
+        $formattedData[] = ['subject' => $subject, 'teacher' => $teacher];
+    }
+
+    return view('admin.partials.subject_assign_data', [
+        'data'=> $formattedData,
+    ]);
 });
 
 

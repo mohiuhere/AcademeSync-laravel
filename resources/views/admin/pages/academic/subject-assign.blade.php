@@ -48,8 +48,8 @@
                                     <i class="fa-solid fa-list"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Delete</a>
+                                  <a class="dropdown-item" href="{{ url('subject-assign/edit/'.$subject_assign->id) }}">Edit</a>
+                                  <a class="dropdown-item" href="{{ url('subject-assign/delete/'.$subject_assign->id) }}">Delete</a>
                                 </div>
                             </div>
                         </td>
@@ -70,7 +70,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Teachers And Subjects List</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

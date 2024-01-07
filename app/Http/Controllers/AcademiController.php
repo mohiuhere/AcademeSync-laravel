@@ -322,26 +322,34 @@ class AcademiController extends Controller
                 'teacher_id' => 'required|array|min:1',
                 'teacher_id.*' => 'required',
             ]);
-            $active_session_id = session()->get('active_session_list_id');
-            DB::insert(
-                'INSERT INTO subject_assigns 
-                (class_id, section_id, session_list_id, subjects_id, teachers_id) 
-                VALUES (?, ?, ?, ?, ?)', [
-                    $req->class_id,
-                    $req->section_id,
-                    $active_session_id,
-                    json_encode($req->subject_id),
-                    json_encode($req->teacher_id),
-                ]);
-            return redirect()->route('subject.assign.index');
+            $valid = DB::select('SELECT * FROM subject_assigns WHERE class_id = ? AND section_id = ?', [
+                $req->class_id,
+                $req->section_id,
+            ]);
+            if(!$valid){
+                $active_session_id = session()->get('active_session_list_id');
+                DB::insert(
+                    'INSERT INTO subject_assigns 
+                    (class_id, section_id, session_list_id, subjects_id, teachers_id) 
+                    VALUES (?, ?, ?, ?, ?)', [
+                        $req->class_id,
+                        $req->section_id,
+                        $active_session_id,
+                        json_encode($req->subject_id),
+                        json_encode($req->teacher_id),
+                    ]);
+                return redirect()->route('subject.assign.index');
+            }
+            return redirect()->back();
         }
 
         public function editSubjectAssign(){
 
         }
 
-        public function deleteSubjectAssign(){
-
+        public function deleteSubjectAssign($id){
+            DB::table('subject_assigns')->where('id', '=', $id)->delete();
+            return redirect()->route('subject.assign.index');
         }
     //-------------------------------------END SUBJECT ASSIGN----------------------------------------------/
 }
