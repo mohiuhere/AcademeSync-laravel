@@ -17,6 +17,13 @@ return new class extends Migration
             $table->integer('roll');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')->references('id')->on('sections');
+
             $table->date('admission_date');
             $table->boolean('status')->default(true);
             $table->timestamps();

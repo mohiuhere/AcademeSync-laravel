@@ -43,15 +43,25 @@
                     @foreach ($students as $student)
                     <tr>
                         <td>{{ $student->roll_no }}</td>
-                        <td>Active</td>
+                        <td>{{ $student->first_name. " ".$student->last_name }}</td>
+                        <td>{{ $student->mobile }}</td>
+                        <td>{{ $student->email}}</td>
+                        <td>{{ $student->admission_date }}</td>
+                        <td>
+                            @if($student->status)
+                                <span class="badge bg-primary text-white">Active</span>
+                            @else
+                                <span class="badge bg-danger text-white">Unactive</span>
+                            @endif
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-list"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
+                                    <a class="dropdown-item" href="{{ url('student/edit/'.$student->id) }}">Edit</a>
+                                    <a class="dropdown-item" href="{{ url('student/delete/'.$student->id) }}">Delete</a>
                                 </div>
                             </div>
                         </td>

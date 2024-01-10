@@ -31,6 +31,8 @@ Route::get('admin/dashbord', [AdminController::class, 'adminIndex'])->name('admi
 Route::get('student', [StudentController::class, 'studentIndex'])->name('student.index');
 Route::get('student/create', [StudentController::class, 'createStudentIndex'])->name('create.student.index');
 Route::post('student/store', [StudentController::class, 'storeStudent'])->name('store.student.index');
+Route::post('student/edit/{id}', [StudentController::class, 'editStudentIndex'])->name('edit.student.index');
+Route::post('student/delete/{id}', [StudentController::class, 'deleteStudentIndex'])->name('delete.student.index');
 
 Route::get('promote-student', [StudentController::class, 'promoteStudentIndex'])->name('promote.student.index');
 //------------------------------------------END Student-------------------------------------------------/

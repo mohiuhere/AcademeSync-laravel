@@ -19,13 +19,18 @@ class StudentController extends Controller
         $students = DB::select(
             "SELECT students.id as id,
             students.roll as roll_no,
+            classes.class_name as Class_name,
+            sections.section_name as section_name, 
             users.first_name as first_name,
             users.last_name as last_name,
             users.mobile as mobile,
             users.email as email,
             students.admission_date as admission_date,
             students.status as status
-            FROM users JOIN students ON users.id = students.user_id;"
+            FROM users 
+            JOIN students ON users.id = students.user_id
+            JOIN classes ON classes.id = students.class_id
+            JOIN sections ON sections.id = students.section_id;"
         );
         
         return view('admin.pages.students.student', [
@@ -111,6 +116,8 @@ class StudentController extends Controller
 
             $student = new Student;
             $student->admission_id = $req->admission_no;
+            $student->class_id = $req->class_id;
+            $student->section_id = $req->section_id;
             $student->roll = $req->roll_no;
             $student->user_id = $user->id;
             $student->admission_date = $req->admission_date;
