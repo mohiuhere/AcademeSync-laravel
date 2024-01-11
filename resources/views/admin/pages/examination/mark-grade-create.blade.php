@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     <label for="inputMarkGradePoint" class="form-label">Point</label>
-                    <input name="point" type="number" class="form-control" placeholder="Enter Point" aria-label="Mark Grade Point">
+                    <input name="point" step="any" type="number" class="form-control" placeholder="Enter Point" aria-label="Mark Grade Point">
                 </div>
             </div>
             <div class="row mb-4">

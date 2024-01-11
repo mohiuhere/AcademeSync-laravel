@@ -43,7 +43,10 @@ class ExaminationController extends Controller
 
     //---------------------------------------Mark Grade--------------------------------------------------/
         public function markGradeIndex(){
-            return view('admin.pages.examination.mark-grade');
+            $mark_grades = MarkGrade::all();
+            return view('admin.pages.examination.mark-grade', [
+                'mark_grades'=> $mark_grades
+            ]);
         }
 
         public function createMarkGradeIndex(){
@@ -67,7 +70,7 @@ class ExaminationController extends Controller
             $mark_grade->remark = $req->remark;
             $mark_grade->status = $req->status;
             $mark_grade->save();
-            return redirect()->route('admin.pages.examination.mark-grade');
+            return redirect()->route('mark.grade.index');
         }
 
 
