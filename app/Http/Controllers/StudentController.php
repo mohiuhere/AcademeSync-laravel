@@ -32,7 +32,7 @@ class StudentController extends Controller
             JOIN classes ON classes.id = students.class_id
             JOIN sections ON sections.id = students.section_id;"
         );
-        
+        // dd($students);
         return view('admin.pages.students.student', [
             'students' => $students
         ]);
@@ -72,6 +72,7 @@ class StudentController extends Controller
             'status' => 'required|boolean',
             'address' => 'required|string|max:255',
         ]);
+        // dd( $validated );
         if(request()->has('image_url')){
             $image_path = request()->file('image_url')->store('user-profile', 'public');
             $validate['image'] = $image_path;
@@ -93,6 +94,8 @@ class StudentController extends Controller
 
             $student = new Student;
             $student->admission_id = $req->admission_no;
+            $student->class_id = $req->class_id;
+            $student->section_id = $req->section_id;
             $student->roll = $req->roll_no;
             $student->user_id = $user->id;
             $student->admission_date = $req->admission_date;

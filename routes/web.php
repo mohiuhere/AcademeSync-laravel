@@ -92,14 +92,14 @@ Route::get('subject-assign/delete/{id}', [AcademiController::class, 'deleteSubje
 //-------------------------------------------Examination--------------------------------------------/
 Route::get('exam-type', [ExaminationController::class, 'examTypeIndex'])->name('exam.type.index');
 Route::get('exam-type/create', [ExaminationController::class, 'createExamTypeIndex'])->name('create.exam.type.index');
-Route::post('exam-type/store', [ExaminationController::class, 'storeExamTypeIndex'])->name('store.exam.type');
+Route::post('exam-type/store', [ExaminationController::class, 'storeExamType'])->name('store.exam.type');
 Route::get('exam-type/edit/{id}', [ExaminationController::class, 'editExamTypeIndex'])->name('edit.exam.type.index');
 Route::get('exam-type/delete/{id}', [ExaminationController::class, 'deleteExamTypeIndex'])->name('delete.exam.type.index');
 
 
 Route::get('mark-grade', [ExaminationController::class, 'markGradeIndex'])->name('mark.grade.index');
 Route::get('mark-grade/create', [ExaminationController::class, 'createMarkGradeIndex'])->name('create.mark.grade.index');
-Route::post('mark-grade/store', [ExaminationController::class, 'storeMarkGradeIndex'])->name('store.mark.grade');
+Route::post('mark-grade/store', [ExaminationController::class, 'storeMarkGrade'])->name('store.mark.grade');
 Route::get('mark-grade/edit/{id}', [ExaminationController::class, 'editMarkGradeIndex'])->name('edit.mark.grade.index');
 Route::get('mark-grade/delete/{id}', [ExaminationController::class, 'deleteMarkGradeIndex'])->name('delete.mark.grade.index');
 

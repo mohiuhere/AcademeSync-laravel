@@ -19,8 +19,9 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Student Roll</th>
                         <th>Name</th>
+                        <th>Class (Section)</th>
+                        <th>Student Roll</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Admission Date</th>
@@ -30,8 +31,10 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Student Roll</th>
+
                         <th>Name</th>
+                        <th>Class (Section)</th>
+                        <th>Student Roll</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Admission Date</th>
@@ -42,8 +45,9 @@
                 <tbody>
                     @foreach ($students as $student)
                     <tr>
-                        <td>{{ $student->roll_no }}</td>
                         <td>{{ $student->first_name. " ".$student->last_name }}</td>
+                        <td>{{ $student->class_name." (".$student->section_name.") " }}</td>
+                        <td>{{ $student->roll_no }}</td>
                         <td>{{ $student->mobile }}</td>
                         <td>{{ $student->email}}</td>
                         <td>{{ $student->admission_date }}</td>

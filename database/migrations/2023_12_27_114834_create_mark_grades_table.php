@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('point', 3, 2);
             $table->integer('percent_from');
             $table->integer('percent_upto');
-            $table->string('Remark');
+            $table->string('remark');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

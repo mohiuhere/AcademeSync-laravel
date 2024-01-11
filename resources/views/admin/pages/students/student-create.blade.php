@@ -10,6 +10,15 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+        @if ($errors->any())
+        <div class="alert alert-primary">
+            <ul class="text-danger">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card-header  row justify-content-md-center m-0">
         <h6 class="m-0 font-weight-bold text-primary col align-self-center">Student Create Input</h6>
     </div>
