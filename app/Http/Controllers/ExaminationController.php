@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\ExamType;
 use App\Models\MarkGrade;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -78,7 +79,20 @@ class ExaminationController extends Controller
 
     //---------------------------------------Mark Distribution-------------------------------------------/
         public function markDistributionIndex(){
-            return view('admin.pages.examination.mark-distribution');
+            $mark_distributions = DB::select(
+                'SELECT
+                    id,
+                    mark_distribution_name,
+                    allot_mark,
+                    description,
+                    status,
+                    (SELECT SUM(value::int) FROM JSON_ARRAY_ELEMENTS_TEXT(allot_mark) AS value) AS total
+                FROM
+                    mark_distributions;'
+            );
+            return view('admin.pages.examination.mark-distribution',[
+                'mark_distributions'=> $mark_distributions
+            ]);
         }
 
         public function createMarkDistributionIndex(){
@@ -86,7 +100,24 @@ class ExaminationController extends Controller
         }
 
         public function storeMarkDistribution(Request $req){
-            dd($req);
+            $validated = $req->validate([
+                'mark_distribution_name' => 'required|string|max:255',
+                'mark_descriptions'=> 'required|array|min:1',
+                'mark_descriptions.*'=> 'required',
+                'allot_marks'=> 'required|array|min:1',
+                'allot_marks.*'=> 'required',
+                'status' => 'required|boolean'
+            ]);
+            // dd($validated);
+            DB::insert(
+                'INSERT INTO mark_distributions (mark_distribution_name, description, allot_mark, status)
+                VALUES(?, ?, ?, ?)', [
+                    $req->mark_distribution_name,
+                    json_encode($req->mark_descriptions),
+                    json_encode($req->allot_marks),
+                    $req->status
+                ]);
+            return redirect()->route('mark.distribution.index');
         }
     //-------------------------------------End Mark Distribution----------------------------------------/
 

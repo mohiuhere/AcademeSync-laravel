@@ -28,13 +28,13 @@
             <div class="row">
                 <div class="col">
                     <label for="inputMarkDistributionName" class="form-label">Name</label>
-                    <input name="" type="text" class="form-control" placeholder="Enter Mark Distribution Name" aria-label="Mark Distribution Name">
+                    <input name="mark_distribution_name" type="text" class="form-control" placeholder="Enter Mark Distribution Name" aria-label="Mark Distribution Name">
                 </div>
                 <div class="col">
                     <label for="inputStatus" class="form-label">Status</label>
-                    <select id="inputStatus" class="form-control">
-                        <option selected>Active</option>
-                        <option>Inactive</option>
+                    <select name="status" id="inputStatus" class="form-control">
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
                     </select>
                 </div>
             </div>
@@ -77,7 +77,7 @@
             e.preventDefault();
             $("#mark_distribution_show_item").prepend(`<div class="row">
                     <div class="col-md-11 mb-3 d-flex">
-                        <input type="text" name="mark_description[]" class="form-control mr-2" placeholder="Enter Description Name">
+                        <input type="text" name="mark_descriptions[]" class="form-control mr-2" placeholder="Enter Description Name">
                         <input type="text" name="allot_marks[]" class="form-control mr-2" placeholder="Enter Allot Mark">
                     </div>
                     <div class="col-md-1 mb-3 d-grid">

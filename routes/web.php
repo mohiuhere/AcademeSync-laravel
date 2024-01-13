@@ -13,6 +13,7 @@ use App\Models\SubjectAssign;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\MarkDistribution;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -176,6 +177,30 @@ Route::get('session/delete/{id}', [SettingController::class, 'deleteSession'])->
 //---------------------------------------- End Setting-----------------------------------------/
 
 // routes/web.php
+
+Route::get('/getMarkDistribution/{distributionId}', function($distributionId)
+{
+    
+    $markDistribution = MarkDistribution::find($distributionId);
+    $description = json_decode($markDistribution->description);
+    $allot_mark = json_decode($markDistribution->allot_mark);
+
+    $data= [  
+        $description,
+        $allot_mark,
+    ];
+    $formattedData = [];
+
+    foreach ($data[0] as $index => $description) {
+        $allot_mark = $data[1][$index];
+        $formattedData[] = ['description' => $description, 'allot_mark' => $allot_mark];
+    }
+
+    return view('admin.partials.mark-distribution-data', [
+        'data'=> $formattedData,
+    ]);
+});
+
 
 Route::get('/getSubjectAssignData/{subject_assign_id}', function($subjectAssignId)
 {
