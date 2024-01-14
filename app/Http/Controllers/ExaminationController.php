@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\ExamType;
 use App\Models\MarkGrade;
+use App\Models\Classes;
+use App\Models\MarkDistribution;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -123,15 +125,42 @@ class ExaminationController extends Controller
 
     //---------------------------------------Mark Setup ------------------------------------------------/
         public function examSetupIndex(){
-            return view('admin.pages.examination.exam-setup');
+            $mark_distributions = MarkDistribution::all();
+            return view('admin.pages.examination.exam-setup', [
+                'mark_distributions'=> $mark_distributions
+            ]);
         }
 
         public function createExamSetupIndex(){
-            return view('admin.pages.examination.exam-setup-create');
+            $exam_types = ExamType::where('status', '=' ,'true')->get();
+            $classes = Classes::where('status', '=' ,'true')->get();
+            $mark_distributions = MarkDistribution::where('status', '=' ,'true')->get();
+            // dd($exam_type);
+            return view('admin.pages.examination.exam-setup-create', [
+                'exam_types'=> $exam_types,
+                'classes'=> $classes,
+                'mark_distributions'=> $mark_distributions
+
+            ]);
         }
 
         public function storeExamSetup(Request $req){
-            dd($req);
+            $validated = $req->validate([
+                'exam_type_id'=> 'required|numeric',
+                'mark_distribution_id'=> 'required|numeric',
+                'class_id'=> 'required|numeric',
+                'status' => 'required|boolean'
+            ]);
+            $active_session_id = session()->get('active_session_list_id');
+            DB::insert(
+                'INSERT INTO exam_setups (exam_type_id, class_id, mark_distribution_id, session_list_id, status) 
+                VALUES (?, ?, ?, ?, ?)', [
+                    $validated['exam_type_id'],
+                    $validated['class_id'],
+                    $validated['mark_distribution_id'],
+                    $active_session_id,
+                    $validated['status'],
+                ]);
         }
     //-------------------------------------End Mark Setup----------------------------------------------/
 

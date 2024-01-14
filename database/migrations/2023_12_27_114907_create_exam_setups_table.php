@@ -19,8 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('class_id');
             $table->foreign('class_id')->references('id')->on('classes');
 
-            $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('sections');
 
             $table->unsignedBigInteger('mark_distribution_id');
             $table->foreign('mark_distribution_id')->references('id')->on('mark_distributions');
