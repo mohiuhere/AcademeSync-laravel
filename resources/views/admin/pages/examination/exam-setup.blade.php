@@ -20,56 +20,47 @@
                 <thead>
                     <tr>
                         <th>Exam Title</th>
-                        <th>Class (Section)</th>
-                        <th>Subjects</th>
-                        <th>Total Mark</th>
+                        <th>Mark Distribution</th>
+                        <th>Class</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Exam Title</th>
-                        <th>Class (Section)</th>
-                        <th>Subjects</th>
-                        <th>Total Mark</th>
+                        <th>Mark Distribution</th>
+                        <th>Class</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>Final</td>
-                        <td>One (A)</td>
-                        <td>Higher Math</td>
-                        <td>100</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-list"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
+                    @foreach ($exam_setups as $exam_setup)
+                        <tr>
+                            <td>{{ $exam_setup->exam_type_name }}</td>
+                            <td>{{ $exam_setup->mark_distribution_name }}</td>
+                            <td>{{ $exam_setup->class_name }}</td>
+                            <td>
+                                @if($exam_setup->status)
+                                    <span class="badge bg-primary text-white">Active</span>
+                                @else
+                                    <span class="badge bg-danger text-white">Unactive</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-list"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('exam-setup/edit/'.$exam_setup->id) }}">Edit</a>
+                                        <a class="dropdown-item" href="{{ url('exam-setup/delete/'.$exam_setup->id) }}">Delete</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Final</td>
-                        <td>One (A)</td>
-                        <td>Higher Math</td>
-                        <td>100</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-list"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

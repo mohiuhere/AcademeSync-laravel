@@ -260,7 +260,15 @@ Route::get('/get-data/{classId}', function($classId){
 })->name('get-data');
 
 
-Route::get('mark-register/mark-register-filter', function(){
+Route::get('mark-register/mark-register-filter', function(Request $req){
+    $validated = $req->validate([
+        'class_id'=> 'required|numeric',
+        'section_id'=> 'required|numeric',
+        'exam_type_id'=> 'required|numeric',
+        'subject_id'=> 'required|numeric',
+    ]);
+    
+    // dd($validated);
     $data = [[
             'name' => 'John Doe',
             'age' => 60,

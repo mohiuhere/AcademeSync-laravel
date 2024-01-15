@@ -5,6 +5,9 @@ use App\Models\ExamType;
 use App\Models\MarkGrade;
 use App\Models\Classes;
 use App\Models\MarkDistribution;
+use App\Models\Section;
+use App\Models\Subject;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -125,9 +128,15 @@ class ExaminationController extends Controller
 
     //---------------------------------------Mark Setup ------------------------------------------------/
         public function examSetupIndex(){
-            $mark_distributions = MarkDistribution::all();
+            $exam_setups = DB::select(
+                'SELECT exam_setups.id, exam_setups.status, exam_types.exam_type_name, classes.class_name, mark_distributions.mark_distribution_name 
+                FROM exam_setups
+                JOIN exam_types ON exam_types.id = exam_setups.exam_type_id
+                JOIN classes ON classes.id = exam_setups.class_id
+                JOIN mark_distributions ON mark_distributions.id = exam_setups.mark_distribution_id;');
+            // dd($exam_setup);
             return view('admin.pages.examination.exam-setup', [
-                'mark_distributions'=> $mark_distributions
+                'exam_setups'=> $exam_setups
             ]);
         }
 
@@ -161,6 +170,7 @@ class ExaminationController extends Controller
                     $active_session_id,
                     $validated['status'],
                 ]);
+            return redirect()->route('exam.setup.index');
         }
     //-------------------------------------End Mark Setup----------------------------------------------/
 
@@ -170,7 +180,16 @@ class ExaminationController extends Controller
         }
 
         public function createMarkRegisterIndex(){
-            return view('admin.pages.examination.mark-register-create');
+            $classes = Classes::where('status', '=' ,'true')->get();
+            $sections = Section::where('status', '=' ,'true')->get();
+            $exam_types = ExamType::where('status', '=','true')->get();
+            $subjects = Subject::where('status', '=','true')->get();
+            return view('admin.pages.examination.mark-register-create', [
+                'exam_types'=> $exam_types,
+                'classes'=> $classes,
+                'sections'=> $sections,
+                'subjects'=> $subjects
+            ]);
         }
 
         public function storeMarkRegister(Request $req){
